@@ -23,5 +23,8 @@ export async function recordFromSlug(
     return null;
   }
 
-  return schemas.product().parse(record);
+  return schemas.product().parse({
+    ...record.fields,
+    ID: record.id,
+  });
 }
