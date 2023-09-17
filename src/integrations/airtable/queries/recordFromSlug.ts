@@ -1,5 +1,5 @@
 import { AirtableBase } from "airtable/lib/airtable_base";
-import * as schemas from "../schemas";
+import * as schemas from "app/schemas";
 
 interface RecordFromSlugInput {
   tableName: string;

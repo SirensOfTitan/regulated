@@ -8,11 +8,8 @@ export const dynamicParams = false;
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const products = await airtable.queries.allRecordsForBase(
+  const products = await airtable.queries.allProducts(
     airtable.defaultClient,
-    {
-      baseName: "Products",
-    },
   );
 
   return products
