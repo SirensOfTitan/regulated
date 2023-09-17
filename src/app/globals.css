@@ -1,0 +1,19 @@
+@import "node_modules/modern-normalize/modern-normalize.css";
+
+.main {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  height: 100vh;
+}
+
+* {
+  font-family: var(--fonts);
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-page-alt);
+  font-size: 14px;
+  color: var(--text-primary);
+}

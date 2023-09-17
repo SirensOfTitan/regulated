@@ -1,0 +1,24 @@
+:root {
+  --fonts: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
+    "Helvetica Neue", helvetica, arial, sans-serif;
+  --palatinate-blue: #4b3ee0;
+  --columbia-blue: #c0d6df;
+  --licorice: #22181c;
+  --chestnut: #a5402d;
+  --baby-powder: #fdfffc;
+  --black-squeeze: #f3f7fb;
+
+  --gainsboro: #e8e8e8;
+  --alto: #d9d9d9;
+  --white: #ffffff;
+}
+
+.lightTheme,
+:root {
+  --text-primary: var(--licorice);
+  --brand: var(--palatinate-blue);
+  --text-link: var(--palatinate-blue);
+  --bg-page-primary: var(--baby-powder);
+  --bg-page-alt: var(--black-squeeze);
+  --border-primary: var(--columbia-blue);
+}

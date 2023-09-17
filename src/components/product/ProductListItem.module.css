@@ -1,0 +1,39 @@
+.productListItem {
+  background: var(--bg-page-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 4px 8px;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 14px;
+}
+
+.tagCloud {
+  display: flex;
+  flex-direction: row;
+}
+
+.name a {
+  text-decoration: none;
+  color: var(--text-link);
+}
+
+.name a:hover {
+  text-decoration: underline;
+}
+
+.tag {
+  font-weight: 500;
+  background: var(--brand);
+  color: var(--baby-powder);
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.tag + .tag {
+  margin-left: 4px;
+}
