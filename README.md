@@ -2,6 +2,8 @@
 
 Generate a Personal Access Token on Airtable, and then add that entry to `.env.local` as `AIRTABLE_KEY=the_key_you_created`.
 
+Install `node` and `pnpm` via Homebrew or your other favorite option. Then `npm install` the local dependencies.
+
 ## Getting Started
 
 First, run the development server:
