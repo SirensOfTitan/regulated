@@ -4,19 +4,21 @@ import { useDeferredValue, useMemo, useState } from "react";
 import * as strings from "app/utils/strings";
 import ProductListItem from "./ProductListItem";
 import styles from "./ProductList.module.css";
-import { Accreditation, Product } from "app/schemas";
+import { Accreditation, Product, User } from "app/schemas";
 import { useRouter } from "next/router";
 import { UpdateQueryString } from "../general/UpdateQueryString";
 
 interface Props {
   products: Product[];
   accreditations: Map<string, Accreditation>;
+  users: Map<string, User>;
   initialQuery: string;
 }
 
 export default function ProductList({
   products,
   accreditations,
+  users,
   initialQuery,
 }: Props) {
   const [queryImpl, setQuery] = useState(initialQuery);
@@ -64,6 +66,7 @@ export default function ProductList({
             <ProductListItem
               product={product}
               accreditations={accreditations}
+              users={users}
             />
           </li>
         ))}

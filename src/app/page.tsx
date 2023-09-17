@@ -13,22 +13,25 @@ interface Props {
 }
 
 export default async function Products({ searchParams }: Props) {
-  const [products, accs] = await Promise.all([
+  const [products, accs, users] = await Promise.all([
     airtable.cached.allRecordsForBase({
       baseName: "Products",
       schema: schemas.product(),
     }),
     airtable.cached.allAccreditations(),
+    airtable.cached.allUsers(),
   ]);
 
   // Rekey dependent types by their IDs
   const accsByID = new Map(accs.map((acc) => [acc.id, acc]));
+  const usersByID = new Map(users.map((user) => [user.id, user]));
 
   return (
     <>
       <ProductList
         products={products}
         accreditations={accsByID}
+        users={usersByID}
         initialQuery={searchParams?.query ?? ""}
       />
     </>
