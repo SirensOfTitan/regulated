@@ -4,6 +4,7 @@
   --palatinate-blue: #4b3ee0;
   --columbia-blue: #c0d6df;
   --licorice: #22181c;
+  --davys-gray: #aca9b6;
   --chestnut: #a5402d;
   --baby-powder: #fdfffc;
   --black-squeeze: #f3f7fb;
@@ -16,9 +17,11 @@
 .lightTheme,
 :root {
   --text-primary: var(--licorice);
+  --text-secondary: var(--davys-grey);
   --brand: var(--palatinate-blue);
   --text-link: var(--palatinate-blue);
   --bg-page-primary: var(--baby-powder);
   --bg-page-alt: var(--black-squeeze);
   --border-primary: var(--columbia-blue);
+  --icon-primary: var(--alto);
 }
