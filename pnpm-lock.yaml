@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@fortawesome/fontawesome-free':
-    specifier: ^6.4.2
-    version: 6.4.2
   '@types/node':
     specifier: 20.6.2
     version: 20.6.2
@@ -102,12 +99,6 @@ packages:
   /@eslint/js@8.49.0:
     resolution: {integrity: sha512-1S8uAY/MTJqVx0SC4epBq+N2yhuwtNwLbJYNZyhL2pO1ZVKn5HFXav5T41Ryzy9K9V7ZId2JB2oy/W4aCd9/2w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dev: false
-
-  /@fortawesome/fontawesome-free@6.4.2:
-    resolution: {integrity: sha512-m5cPn3e2+FDCOgi1mz0RexTUvvQibBebOUlUlW0+YrMjDTPkiJ6VTKukA1GRsvRw+12KyJndNjj0O4AgTxm2Pg==}
-    engines: {node: '>=6'}
-    requiresBuild: true
     dev: false
 
   /@humanwhocodes/config-array@0.11.11:
