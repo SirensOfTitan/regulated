@@ -1,6 +1,4 @@
 import * as airtable from "app/integrations/airtable";
-import styles from "./page.module.css";
-import * as schemas from "app/schemas";
 import ProductList from "app/components/product/ProductList";
 import { Maybe } from "app/types";
 
@@ -14,10 +12,7 @@ interface Props {
 
 export default async function Products({ searchParams }: Props) {
   const [products, accs, users] = await Promise.all([
-    airtable.cached.allRecordsForBase({
-      baseName: "Products",
-      schema: schemas.product(),
-    }),
+    airtable.cached.allProducts(),
     airtable.cached.allAccreditations(),
     airtable.cached.allUsers(),
   ]);
