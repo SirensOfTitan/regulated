@@ -1,0 +1,27 @@
+.labelRoot {
+  display: flex;
+  padding: 8px 0px;
+}
+
+.labelRoot.row {
+  flex-direction: row;
+}
+
+.labelRoot.column {
+  flex-direction: column;
+}
+
+.label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.labelRoot.row .label + .body {
+  margin-left: 4px;
+}
+
+.labelRoot.column .label + .body {
+  margin-top: 4px;
+}

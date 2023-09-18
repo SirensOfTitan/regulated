@@ -1,6 +1,7 @@
 import { Maybe } from "app/types";
 
 export interface Accreditation {
+  id: string;
   type: string;
   products: string[];
   kind: "gov" | "industry";
@@ -16,6 +17,7 @@ export interface Product {
 }
 
 export interface User {
+  id: string;
   name: string;
   abbreviation: Maybe<string>;
 }

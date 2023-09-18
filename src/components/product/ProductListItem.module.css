@@ -25,15 +25,3 @@
 .name a:hover {
   text-decoration: underline;
 }
-
-.tag {
-  font-weight: 500;
-  background: var(--brand);
-  color: var(--baby-powder);
-  padding: 4px;
-  border-radius: 4px;
-}
-
-.tag + .tag {
-  margin-left: 4px;
-}

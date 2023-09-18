@@ -60,7 +60,10 @@ export default function ProductList({
           />
         </form>
       </header>
-      <p className={styles.headerText}>Discover cloud products and infrastructure accredited for and selling into regulated industries.</p>
+      <p className={styles.headerText}>
+        Discover cloud products and infrastructure accredited for and selling
+        into regulated industries.
+      </p>
       <ul className={styles.list}>
         {filteredProducts.map((product) => (
           <li key={product.id} className={styles.listItem}>
