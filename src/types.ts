@@ -11,3 +11,5 @@ export interface Product {
   url: Maybe<string>;
   slug: string;
 }
+
+export type ElementOf<T extends readonly unknown[]> = T[number];

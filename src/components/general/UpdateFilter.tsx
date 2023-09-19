@@ -2,13 +2,14 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import * as search from "app/search";
 
 interface Props {
-  /** The query string, should be deferred so we're not updating too often */
+  filter: search.Filter;
   query: string;
 }
 
-export function UpdateQueryString({ query }: Props) {
+export function UpdateFilter({ filter, query }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -21,8 +22,14 @@ export function UpdateQueryString({ query }: Props) {
       newParams.set("query", query);
     }
 
+    if (filter.orderBy == null) {
+      newParams.delete("order");
+    } else {
+      newParams.set("order", filter.orderBy);
+    }
+
     router.push(`${pathname}?${newParams.toString()}`);
-  }, [query, pathname, router, searchParams]);
+  }, [filter, pathname, router, searchParams, query]);
 
   return null;
 }
