@@ -3,14 +3,20 @@ import styles from "./Label.module.css";
 import { PropsWithChildren, ReactNode } from "react";
 
 interface Props extends PropsWithChildren {
+  className?: string;
   direction: "row" | "column";
   label: ReactNode;
 }
 
-export default function Label({ direction, label, children }: Props) {
+export default function Label({
+  className,
+  direction,
+  label,
+  children,
+}: Props) {
   return (
     <article
-      className={browser.classnames(styles.labelRoot, {
+      className={browser.classnames(className, styles.labelRoot, {
         [styles.row]: direction === "row",
         [styles.column]: direction === "column",
       })}

@@ -1,15 +1,16 @@
 .productListItem {
   background: var(--bg-page-primary);
-  border: 1px solid var(--border-primary);
   border-radius: 8px;
-  padding: 4px 8px;
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
+  box-shadow: var(--shadow-small);
+  padding: 8px 0;
 }
 
 .name {
   font-size: 14px;
+  padding: 0px 8px 8px 8px;
 }
 
 .tagCloud {

@@ -4,6 +4,7 @@ import * as collections from "app/utils/collections";
 import TagGroup from "app/components/general/TagGroup";
 import Tag from "app/components/general/Tag";
 import Label from "../general/Label";
+import styles from "./ProductAccreditations.module.css";
 
 interface IconProps {
   kind: "gov" | "industry";
@@ -34,7 +35,11 @@ export default function ProductAccreditations({
   }, [accreditations, accreditationsMap]);
 
   return (
-    <Label direction="column" label={"Accreditations"}>
+    <Label
+      className={styles.container}
+      direction="column"
+      label={"Accreditations"}
+    >
       <TagGroup>
         {usedBy.map((accreditation) => (
           <Tag
