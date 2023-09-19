@@ -13,4 +13,9 @@ export const searchParams = () =>
         (val) => typeof val === "string" && ORDER_BY_REGEX.test(val),
       ),
     ),
+    accreditations: z.optional(
+      z
+        .union([z.string().transform((s) => [s]), z.array(z.string())])
+        .transform((z) => new Set(z)),
+    ),
   });

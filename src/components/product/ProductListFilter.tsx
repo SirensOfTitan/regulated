@@ -4,7 +4,7 @@ import Popup from "../general/Popup";
 import PopupRadioItem from "../general/PopupRadioItem";
 import styles from "./ProductListFilter.module.css";
 import { Accreditation } from "app/schemas";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface OrderByLabelProps {
   option: search.OrderOption;
@@ -42,6 +42,9 @@ export default function ProductListFilter({
     () => Array.from(accreditationsMap, ([, value]) => value),
     [accreditationsMap],
   );
+
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => setIsClient(true), []);
 
   return (
     <article className={styles.filterRoot}>
@@ -107,6 +110,8 @@ export default function ProductListFilter({
                       accreditations: newAccreditations,
                     });
                   }}
+                  name="accreditations"
+                  value={acc.id}
                   checked={filter.accreditations?.has(acc.id) ?? false}
                 />
               );
@@ -115,6 +120,18 @@ export default function ProductListFilter({
         }
       />
       <div className={styles.spacer} />
+      {!isClient || search.queries.isFilterEmpty(filter) ? null : (
+        <button
+          type="button"
+          className={styles.clear}
+          onClick={(ev) => {
+            ev.preventDefault();
+            onChange({});
+          }}
+        >
+          Clear filters
+        </button>
+      )}
       <noscript>
         <input className={styles.submit} type="submit" value="Search" />
       </noscript>

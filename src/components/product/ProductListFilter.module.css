@@ -22,6 +22,21 @@
   flex-direction: row;
 }
 
+.clear {
+  border: none;
+  background: transparent;
+  font-weight: 500;
+  padding: 8px;
+  flex: 0 0 auto;
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.clear:hover {
+  background: var(--bg-row);
+}
+
 .submit {
   border: none;
   background: var(--brand);

@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import * as search from "app/search";
 
@@ -12,10 +12,9 @@ interface Props {
 export function UpdateFilter({ filter, query }: Props) {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const newParams = new URLSearchParams(searchParams);
+    const newParams = new URLSearchParams();
     if (query === "") {
       newParams.delete("query");
     } else {
@@ -28,8 +27,16 @@ export function UpdateFilter({ filter, query }: Props) {
       newParams.set("order", filter.order);
     }
 
+    if (filter.accreditations == null || filter.accreditations.size === 0) {
+      newParams.delete("accreditations");
+    } else {
+      for (const acc of filter.accreditations) {
+        newParams.append("accreditations", acc);
+      }
+    }
+
     router.push(`${pathname}?${newParams.toString()}`);
-  }, [filter, pathname, router, searchParams, query]);
+  }, [filter, pathname, router, query]);
 
   return null;
 }
