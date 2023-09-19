@@ -1,0 +1,36 @@
+.dropdownRoot {
+  display: inline-block;
+  position: relative;
+  outline: none;
+}
+
+.popup {
+  position: absolute;
+  top: calc(100% + 2px);
+  min-width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100000;
+}
+
+.dropdownRoot:focus .popup {
+  outline: none;
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdownRoot .closeMask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+}
+
+.dropdownRoot:focus .closeMask {
+  display: inline-block;
+}

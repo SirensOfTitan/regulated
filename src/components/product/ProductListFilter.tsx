@@ -1,4 +1,8 @@
 import * as search from "app/search";
+import Dropdown from "../general/Dropdown";
+import Popup from "../general/Popup";
+import PopupRadioItem from "../general/PopupRadioItem";
+import styles from "./ProductListFilter.module.css";
 
 interface OrderByLabelProps {
   option: search.OrderOption;
@@ -28,36 +32,43 @@ interface Props {
 
 export default function ProductListFilter({ filter, onChange }: Props) {
   return (
-    <article>
-      {search.ORDER_OPTIONS.map(([order, dir]) => {
-        const optionID = search.utils.packOption([order, dir]);
-        const checked = filter.order === optionID;
-        return (
-          <section key={optionID}>
-            <input
-              type="radio"
-              onChange={(ev) => {
-                ev.preventDefault();
-                if (ev.target.value !== optionID) {
-                  return;
-                }
+    <article className={styles.filterRoot}>
+      <Dropdown
+        className={styles.actionItem}
+        action={"↕ Order by"}
+        popup={
+          <Popup>
+            {search.ORDER_OPTIONS.map(([order, dir]) => {
+              const optionID = search.utils.packOption([order, dir]);
+              const checked = filter.order === optionID;
+              return (
+                <PopupRadioItem
+                  key={optionID}
+                  onChange={(ev) => {
+                    ev.preventDefault();
+                    if (ev.target.value !== optionID) {
+                      return;
+                    }
 
-                onChange({
-                  ...filter,
-                  order: optionID,
-                });
-              }}
-              checked={checked}
-              name="order"
-              id={optionID}
-              value={optionID}
-            />
-            <label htmlFor={optionID}>
-              <OrderByLabel option={[order, dir]} />
-            </label>
-          </section>
-        );
-      })}
+                    onChange({
+                      ...filter,
+                      order: optionID,
+                    });
+                  }}
+                  checked={checked}
+                  value={optionID}
+                  name="order"
+                  label={<OrderByLabel option={[order, dir]} />}
+                />
+              );
+            })}
+          </Popup>
+        }
+      />
+      <div className={styles.spacer} />
+      <noscript>
+        <input className={styles.submit} type="submit" value="Search" />
+      </noscript>
     </article>
   );
 }

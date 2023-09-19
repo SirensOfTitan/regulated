@@ -1,0 +1,28 @@
+.popupItem {
+  flex: 1 1 auto;
+  display: flex;
+  white-space: nowrap;
+  outline: none;
+  font-weight: 500;
+  border-radius: 4px;
+  align-items: center;
+}
+
+.popupItem input {
+  flex: 0 0 auto;
+  margin: 0 8px;
+}
+
+.popupItem + .popupItem {
+  margin-top: 1px;
+}
+
+.popupItem:hover {
+  background: var(--brand);
+  color: var(--white);
+}
+
+.label {
+  padding: 8px;
+  cursor: pointer;
+}
