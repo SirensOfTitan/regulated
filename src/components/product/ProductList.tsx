@@ -1,11 +1,8 @@
 "use client";
-import { useSearchParams } from "next/navigation";
 import { useDeferredValue, useMemo, useState } from "react";
-import * as strings from "app/utils/strings";
 import ProductListItem from "./ProductListItem";
 import styles from "./ProductList.module.css";
 import { Accreditation, Product, User } from "app/schemas";
-import { useRouter } from "next/router";
 import { UpdateFilter } from "app/components/general/UpdateFilter";
 import ProductListFilter from "./ProductListFilter";
 import * as search from "app/search";
@@ -70,7 +67,11 @@ export default function ProductList({
           Discover cloud products and infrastructure accredited for and selling
           into regulated industries.
         </p>
-        <ProductListFilter filter={filter} onChange={setFilter} />
+        <ProductListFilter
+          filter={filter}
+          onChange={setFilter}
+          accreditations={accreditations}
+        />
       </form>
       <ul className={styles.list}>
         {filteredProducts.map((product) => (

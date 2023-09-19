@@ -5,7 +5,34 @@ import * as strings from "app/utils/strings";
 import { unpackOption } from "./unpackOption";
 import * as collections from "app/utils/collections";
 
-function applyQuery(product: Product, query: string): Maybe<Product> {
+function applyAccreditations(
+  product: Maybe<Product>,
+  accreditations: Maybe<Set<string>>,
+): Maybe<Product> {
+  if (product == null) {
+    return null;
+  }
+
+  // If no accreditations are selected, select them all.
+  if (accreditations == null || accreditations.size === 0) {
+    return product;
+  }
+
+  if (
+    collections.setIntersection(product.accreditations, accreditations).size <=
+    0
+  ) {
+    return null;
+  }
+
+  return product;
+}
+
+function applyQuery(product: Maybe<Product>, query: string): Maybe<Product> {
+  if (product == null) {
+    return null;
+  }
+
   const trimmedQuery = query.trim();
 
   if (trimmedQuery.length === 0) {
@@ -50,7 +77,10 @@ export function applyFilters(
   return sort(
     products
       .map((product) => {
-        return applyQuery(product, query);
+        return applyAccreditations(
+          applyQuery(product, query),
+          filter.accreditations,
+        );
       })
       .filter(collections.isNotNull),
     filter.order,

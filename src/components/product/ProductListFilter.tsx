@@ -3,6 +3,8 @@ import Dropdown from "../general/Dropdown";
 import Popup from "../general/Popup";
 import PopupRadioItem from "../general/PopupRadioItem";
 import styles from "./ProductListFilter.module.css";
+import { Accreditation } from "app/schemas";
+import { useMemo } from "react";
 
 interface OrderByLabelProps {
   option: search.OrderOption;
@@ -27,10 +29,20 @@ function OrderByLabel({ option }: OrderByLabelProps) {
 
 interface Props {
   filter: search.Filter;
+  accreditations: Map<string, Accreditation>;
   onChange: (newFilter: search.Filter) => void;
 }
 
-export default function ProductListFilter({ filter, onChange }: Props) {
+export default function ProductListFilter({
+  filter,
+  onChange,
+  accreditations: accreditationsMap,
+}: Props) {
+  const accreditations = useMemo(
+    () => Array.from(accreditationsMap, ([, value]) => value),
+    [accreditationsMap],
+  );
+
   return (
     <article className={styles.filterRoot}>
       <Dropdown
@@ -56,9 +68,46 @@ export default function ProductListFilter({ filter, onChange }: Props) {
                     });
                   }}
                   checked={checked}
+                  type="radio"
                   value={optionID}
                   name="order"
                   label={<OrderByLabel option={[order, dir]} />}
+                />
+              );
+            })}
+          </Popup>
+        }
+      />
+      <Dropdown
+        className={styles.actionItem}
+        action={"👩‍⚖️ Accreditations"}
+        popup={
+          <Popup>
+            {accreditations.map((acc) => {
+              return (
+                <PopupRadioItem
+                  key={`${acc.id}:${filter.accreditations?.has(acc.id)}`}
+                  type="checkbox"
+                  label={acc.type}
+                  onChange={(ev) => {
+                    ev.preventDefault();
+
+                    const newAccreditations = new Set(
+                      filter?.accreditations ?? [],
+                    );
+
+                    if (ev.target.checked) {
+                      newAccreditations.add(acc.id);
+                    } else {
+                      newAccreditations.delete(acc.id);
+                    }
+
+                    onChange({
+                      ...filter,
+                      accreditations: newAccreditations,
+                    });
+                  }}
+                  checked={filter.accreditations?.has(acc.id) ?? false}
                 />
               );
             })}
