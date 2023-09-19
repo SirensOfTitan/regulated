@@ -1,0 +1,11 @@
+.popup {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  transform: translateZ(0);
+  overflow: hidden;
+  background: var(--bg-page-primary);
+  box-shadow: var(--shadow-large);
+  border-radius: 4px;
+  padding: 1px;
+}

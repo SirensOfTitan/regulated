@@ -34,7 +34,7 @@
   flex-direction: column;
 }
 
-.search input {
+.search input.query {
   flex: 1 1 auto;
   outline: 0;
   border: 1px solid var(--border-primary);

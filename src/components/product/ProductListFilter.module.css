@@ -1,0 +1,38 @@
+.actionItem :global(.anyAction) {
+  padding: 8px;
+  display: inline-block;
+  color: var(--text-link);
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.actionItem:focus :global(.anyAction) {
+  background-color: var(--brand);
+  color: var(--white);
+}
+
+.actionItem :global(.anyAction:hover) {
+  background-color: var(--bg-row);
+}
+
+.filterRoot {
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.submit {
+  border: none;
+  background: var(--brand);
+  font-weight: 500;
+  padding: 8px;
+  flex: 0 0 auto;
+  color: var(--white);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

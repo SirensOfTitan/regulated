@@ -56,6 +56,7 @@ export default function ProductList({
           </a>
           <UpdateFilter filter={filter} query={query} />
           <input
+            className={styles.query}
             name="query"
             type="text"
             value={queryImpl}
@@ -65,15 +66,12 @@ export default function ProductList({
             }}
           />
         </header>
+        <p className={styles.headerText}>
+          Discover cloud products and infrastructure accredited for and selling
+          into regulated industries.
+        </p>
         <ProductListFilter filter={filter} onChange={setFilter} />
-        <noscript>
-          <input type="submit" value="Search" />
-        </noscript>
       </form>
-      <p className={styles.headerText}>
-        Discover cloud products and infrastructure accredited for and selling
-        into regulated industries.
-      </p>
       <ul className={styles.list}>
         {filteredProducts.map((product) => (
           <li key={product.id} className={styles.listItem}>
