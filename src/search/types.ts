@@ -6,7 +6,7 @@ export type Direction = ElementOf<typeof DIRECTION>;
 
 export type PackedOrderOption = `${OrderBy}-${Direction}`;
 export interface Filter {
-  orderBy?: Maybe<PackedOrderOption>;
+  order?: Maybe<PackedOrderOption>;
 }
 
 export type OrderOption = readonly [OrderBy, Direction];

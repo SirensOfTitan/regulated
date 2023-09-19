@@ -22,10 +22,10 @@ export function UpdateFilter({ filter, query }: Props) {
       newParams.set("query", query);
     }
 
-    if (filter.orderBy == null) {
+    if (filter.order == null) {
       newParams.delete("order");
     } else {
-      newParams.set("order", filter.orderBy);
+      newParams.set("order", filter.order);
     }
 
     router.push(`${pathname}?${newParams.toString()}`);

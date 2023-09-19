@@ -31,21 +31,23 @@ export default function ProductListFilter({ filter, onChange }: Props) {
     <article>
       {search.ORDER_OPTIONS.map(([order, dir]) => {
         const optionID = search.utils.packOption([order, dir]);
+        const checked = filter.order === optionID;
         return (
           <section key={optionID}>
             <input
               type="radio"
               onChange={(ev) => {
+                ev.preventDefault();
                 if (ev.target.value !== optionID) {
                   return;
                 }
 
                 onChange({
                   ...filter,
-                  orderBy: optionID,
+                  order: optionID,
                 });
               }}
-              checked={filter.orderBy === optionID}
+              checked={checked}
               name="order"
               id={optionID}
               value={optionID}

@@ -53,6 +53,6 @@ export function applyFilters(
         return applyQuery(product, query);
       })
       .filter(collections.isNotNull),
-    filter.orderBy,
+    filter.order,
   );
 }
