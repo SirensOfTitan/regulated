@@ -7,6 +7,7 @@ import { UpdateFilter } from "app/components/general/UpdateFilter";
 import ProductListFilter from "./ProductListFilter";
 import * as search from "app/search";
 import { applyFilters } from "app/search/utils/applyFilters";
+import Header from "../general/Header";
 
 interface Props {
   products: Product[];
@@ -41,28 +42,13 @@ export default function ProductList({
     <div className={styles.productList}>
       <form
         method="GET"
-        className={styles.search}
         onSubmit={(ev) => {
           // Don't allow form submission when client is hydrated.
           ev.preventDefault();
         }}
       >
-        <header className={styles.header}>
-          <a className={styles.logo} href="/">
-            regulated.app
-          </a>
-          <UpdateFilter filter={filter} query={query} />
-          <input
-            className={styles.query}
-            name="query"
-            type="text"
-            value={queryImpl}
-            onChange={(ev) => {
-              ev.preventDefault();
-              setQuery(ev.target.value);
-            }}
-          />
-        </header>
+        <UpdateFilter filter={filter} query={query} />
+        <Header query={queryImpl} onChangeQuery={setQuery} />
         <p className={styles.headerText}>
           Discover cloud products and infrastructure accredited for and selling
           into regulated industries.

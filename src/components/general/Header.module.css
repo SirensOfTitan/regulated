@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  padding: 8px;
+  align-items: center;
+}
+
+input.query {
+  flex: 1 1 auto;
+  outline: 0;
+  border: 1px solid var(--border-primary);
+  padding: 8px;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.logo {
+  flex: 0 0 auto;
+  padding: 8px;
+}
+
+.logo {
+  font-size: 18px;
+  color: var(--brand);
+  font-weight: bold;
+  text-decoration: none;
+}
