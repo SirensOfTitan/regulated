@@ -8,6 +8,7 @@ import ProductListFilter from "./ProductListFilter";
 import * as search from "app/search";
 import { applyFilters } from "app/search/utils/applyFilters";
 import Header from "../general/Header";
+import { Maybe } from "app/types";
 
 interface Props {
   products: Product[];
@@ -15,6 +16,7 @@ interface Props {
   users: Map<string, User>;
   initialQuery: string;
   initialFilter: search.Filter;
+  focus?: Maybe<"search">;
 }
 
 export default function ProductList({
@@ -23,6 +25,7 @@ export default function ProductList({
   users,
   initialFilter,
   initialQuery,
+  focus,
 }: Props) {
   const [queryImpl, setQuery] = useState(initialQuery);
   const query = useDeferredValue(queryImpl);
@@ -48,7 +51,11 @@ export default function ProductList({
         }}
       >
         <UpdateFilter filter={filter} query={query} />
-        <Header query={queryImpl} onChangeQuery={setQuery} />
+        <Header
+          query={queryImpl}
+          onChangeQuery={setQuery}
+          autoFocus={focus === "search"}
+        />
         <p className={styles.headerText}>
           Discover cloud products and infrastructure accredited for and selling
           into regulated industries.

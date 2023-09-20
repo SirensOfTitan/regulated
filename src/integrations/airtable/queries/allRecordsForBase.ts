@@ -10,9 +10,11 @@ export async function allRecordsForBase<T extends ZodTypeAny>(
   client: AirtableBase,
   { baseName, schema }: AllRecordsForBaseOptions<T>,
 ): Promise<z.infer<T>[]> {
-  log.info("Calling allRecordsForBase", {
-    baseName,
-  });
+  if (process.env.NODE_ENV === "production") {
+    log.info("Calling allRecordsForBase", {
+      baseName,
+    });
+  }
 
   const results = await client(baseName).select().all();
 

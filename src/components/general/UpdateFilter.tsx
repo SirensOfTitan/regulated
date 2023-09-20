@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import * as search from "app/search";
 
@@ -12,6 +12,7 @@ interface Props {
 export function UpdateFilter({ filter, query }: Props) {
   const router = useRouter();
   const pathname = usePathname();
+  const params = useSearchParams();
 
   useEffect(() => {
     const newParams = new URLSearchParams();
@@ -19,6 +20,11 @@ export function UpdateFilter({ filter, query }: Props) {
       newParams.delete("query");
     } else {
       newParams.set("query", query);
+    }
+
+    const focus = params.get("focus");
+    if (focus != null) {
+      newParams.set("focus", focus);
     }
 
     if (filter.order == null) {
@@ -44,7 +50,7 @@ export function UpdateFilter({ filter, query }: Props) {
     }
 
     router.push(`${pathname}?${newParams.toString()}`);
-  }, [filter, pathname, router, query]);
+  }, [filter, pathname, router, query, params]);
 
   return null;
 }

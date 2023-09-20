@@ -29,6 +29,7 @@ export default async function Products({ searchParams }: Props) {
         users={usersByID}
         initialFilter={parsedParams}
         initialQuery={parsedParams.query ?? ""}
+        focus={parsedParams.focus}
       />
     </>
   );

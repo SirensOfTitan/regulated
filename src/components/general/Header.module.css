@@ -4,13 +4,22 @@
   align-items: center;
 }
 
-input.query {
+.query {
   flex: 1 1 auto;
   outline: 0;
   border: 1px solid var(--border-primary);
-  padding: 8px;
+  background: var(--bg-page-primary);
   border-radius: 2px;
   font-size: 16px;
+  padding: 0 8px;
+  display: flex;
+}
+
+.query input {
+  outline: 0;
+  padding: 8px 0;
+  flex: 1 1 auto;
+  border: none;
 }
 
 .logo {
@@ -23,4 +32,34 @@ input.query {
   color: var(--brand);
   font-weight: bold;
   text-decoration: none;
+}
+
+.productToken {
+  border: 1px solid var(--border-primary);
+  background: var(--bg-page-alt);
+  position: relative;
+  align-self: center;
+  font-weight: 500;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 4px;
+  overflow: hidden;
+}
+
+.name {
+  padding: 4px;
+  font-size: 14px;
+  margin: 0 4px;
+}
+
+.productToken .clear {
+  text-decoration: none;
+  padding: 4px 8px;
+  font-size: 14px;
+  border-left: 1px solid var(--border-primary);
+}
+
+.productToken .clear:hover {
+  background: var(--bg-row);
 }

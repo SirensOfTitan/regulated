@@ -8,6 +8,7 @@ const ORDER_BY_REGEX = new RegExp(
 export const searchParams = () =>
   z.object({
     query: z.optional(z.string()),
+    focus: z.optional(z.literal("search")),
     order: z.optional(
       z.custom<search.PackedOrderOption>(
         (val) => typeof val === "string" && ORDER_BY_REGEX.test(val),

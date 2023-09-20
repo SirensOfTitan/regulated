@@ -1,3 +1,5 @@
+import Header from "app/components/general/Header";
+import ProductDetails from "app/components/product/ProductDetails";
 import * as airtable from "app/integrations";
 import * as collections from "app/utils/collections";
 import { cache } from "react";
@@ -29,5 +31,5 @@ export default async function Product({ params }: Params) {
     tableName: "Products",
   });
 
-  return <pre>{JSON.stringify(product)}</pre>;
+  return <ProductDetails product={product} />;
 }
