@@ -5,14 +5,21 @@
 
 .list {
   display: grid;
-  grid-gap: 8px;
-  grid-template-columns: repeat(auto-fill, 400px);
+  column-gap: 8px;
+  row-gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(80vw, 1fr));
   flex-direction: column;
   width: 100%;
   margin-block-start: 0;
   margin-block-end: 0;
   padding-inline-start: 0;
   padding: 8px;
+}
+
+@media (min-width: 860px) {
+  .list.list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, calc(33% - 4px)));
+  }
 }
 
 .productList {
