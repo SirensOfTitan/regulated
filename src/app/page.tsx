@@ -1,6 +1,5 @@
 import * as airtable from "app/integrations/airtable";
 import ProductList from "app/components/product/ProductList";
-import { Maybe } from "app/types";
 import * as schemas from "app/schemas";
 
 export const revalidate = 3600;

@@ -1,5 +1,6 @@
 import { AirtableBase } from "airtable/lib/airtable_base";
 import { ZodTypeAny, z } from "zod";
+import { log } from "app/logger";
 
 interface AllRecordsForBaseOptions<T> {
   baseName: string;
@@ -9,6 +10,10 @@ export async function allRecordsForBase<T extends ZodTypeAny>(
   client: AirtableBase,
   { baseName, schema }: AllRecordsForBaseOptions<T>,
 ): Promise<z.infer<T>[]> {
+  log.info("Calling allRecordsForBase", {
+    baseName,
+  });
+
   const results = await client(baseName).select().all();
 
   const mappedResults = results.map((x) => ({
