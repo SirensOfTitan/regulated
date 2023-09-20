@@ -31,5 +31,5 @@ export default async function Product({ params }: Params) {
     tableName: "Products",
   });
 
-  return <ProductDetails product={product} />;
+  return product == null ? null : <ProductDetails product={product} />;
 }
