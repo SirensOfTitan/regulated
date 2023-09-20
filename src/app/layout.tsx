@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "regulated.app",
-  description: "Shows a series of products that have regulatory approval."
+  description: "Shows a series of products that have regulatory approval.",
 };
 
 export default function RootLayout({

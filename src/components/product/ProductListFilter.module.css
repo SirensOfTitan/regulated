@@ -12,6 +12,10 @@
   color: var(--white);
 }
 
+.actionItem + .actionItem {
+  margin-left: 4px;
+}
+
 .actionItem :global(.anyAction:hover) {
   background-color: var(--bg-row);
 }

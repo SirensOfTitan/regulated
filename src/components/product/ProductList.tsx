@@ -71,6 +71,7 @@ export default function ProductList({
           filter={filter}
           onChange={setFilter}
           accreditations={accreditations}
+          users={users}
         />
       </form>
       <ul className={styles.list}>

@@ -35,6 +35,14 @@ export function UpdateFilter({ filter, query }: Props) {
       }
     }
 
+    if (filter.users == null || filter.users.size === 0) {
+      newParams.delete("users");
+    } else {
+      for (const acc of filter.users) {
+        newParams.append("users", acc);
+      }
+    }
+
     router.push(`${pathname}?${newParams.toString()}`);
   }, [filter, pathname, router, query]);
 

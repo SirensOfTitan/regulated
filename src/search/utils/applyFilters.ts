@@ -28,6 +28,26 @@ function applyAccreditations(
   return product;
 }
 
+function applyUsers(
+  product: Maybe<Product>,
+  users: Maybe<Set<string>>,
+): Maybe<Product> {
+  if (product == null) {
+    return null;
+  }
+
+  // If no users are selected, select them all.
+  if (users == null || users.size === 0) {
+    return product;
+  }
+
+  if (collections.setIntersection(product.users, users).size <= 0) {
+    return null;
+  }
+
+  return product;
+}
+
 function applyQuery(product: Maybe<Product>, query: string): Maybe<Product> {
   if (product == null) {
     return null;
@@ -77,9 +97,12 @@ export function applyFilters(
   return sort(
     products
       .map((product) => {
-        return applyAccreditations(
-          applyQuery(product, query),
-          filter.accreditations,
+        return applyUsers(
+          applyAccreditations(
+            applyQuery(product, query),
+            filter.accreditations,
+          ),
+          filter.users,
         );
       })
       .filter(collections.isNotNull),
