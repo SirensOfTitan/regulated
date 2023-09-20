@@ -83,7 +83,7 @@ export default function ProductListFilter({
       />
       <Dropdown
         className={styles.actionItem}
-        action={"👩‍⚖️ Accreditations"}
+        action={`👩‍⚖️ Accreditations ${filter.accreditations?.size ? `(${filter.accreditations.size})` : ""}`}
         popup={
           <Popup>
             {accreditations.map((acc) => {
