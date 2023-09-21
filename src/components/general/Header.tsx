@@ -31,7 +31,7 @@ export default function Header({
     }
 
     inputRef.current?.focus();
-  // eslint-disable-next-line -- Only run on mount
+    // eslint-disable-next-line -- Only run on mount
   }, []);
 
   return (

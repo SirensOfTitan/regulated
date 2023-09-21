@@ -1,8 +1,7 @@
-import Header from "app/components/general/Header";
 import ProductDetails from "app/components/product/ProductDetails";
-import * as airtable from "app/integrations";
+import * as airtable from "app/integrations/airtable";
 import * as collections from "app/utils/collections";
-import { cache } from "react";
+import * as wikipedia from "app/integrations/wikipedia";
 
 // Ensures that we properly show a 404 when hitting a route not included
 // in the set defined by generateStaticParams.
@@ -31,5 +30,16 @@ export default async function Product({ params }: Params) {
     tableName: "Products",
   });
 
-  return product == null ? null : <ProductDetails product={product} />;
+  const extract =
+    product?.wikipediaSlug == null
+      ? null
+      : await wikipedia.queries.extractFromTitle(product.wikipediaSlug, {
+          next: {
+            revalidate,
+          },
+        });
+
+  return product == null ? null : (
+    <ProductDetails product={product} summary={extract} />
+  );
 }

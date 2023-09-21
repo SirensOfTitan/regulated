@@ -1,0 +1,25 @@
+.heading {
+  color: var(--brand);
+  font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 16px;
+  margin: 0;
+}
+
+h1.heading {
+  font-size: 2em;
+}
+
+h2.heading {
+  font-size: 1.75em;
+}
+
+h3.heading {
+  font-size: 1.5em;
+}
+
+h4.heading,
+h5.heading,
+h6.heading {
+  font-size: 1em;
+}
