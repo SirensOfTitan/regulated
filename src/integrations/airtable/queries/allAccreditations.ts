@@ -18,5 +18,5 @@ export async function allAccreditations(client: AirtableBase) {
     }),
   ]);
 
-  return [...gov, ...industry];
+  return new Map([...gov, ...industry].map((a) => [a.id, a]));
 }

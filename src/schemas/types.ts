@@ -19,5 +19,6 @@ export interface Product {
 export interface User {
   id: string;
   name: string;
+  type: Maybe<string>;
   abbreviation: Maybe<string>;
 }

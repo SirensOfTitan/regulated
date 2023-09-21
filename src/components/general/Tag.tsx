@@ -3,7 +3,7 @@ import styles from "./Tag.module.css";
 import * as browser from "app/utils/browser";
 
 interface Props extends PropsWithChildren {
-  icon: ReactNode;
+  icon?: ReactNode;
   background?: "primary" | "alt";
 }
 
