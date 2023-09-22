@@ -19,7 +19,7 @@ export interface Product {
 export interface Standard {
   id: string;
   name: string;
-  users: string[];
+  products: string[];
 }
 
 export interface User {
