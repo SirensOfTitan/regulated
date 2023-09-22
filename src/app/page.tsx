@@ -15,7 +15,8 @@ export default async function Products({ searchParams }: Props) {
     airtable.cached.allUsers(),
   ]);
 
-  const parsedParams = schemas.searchParams().parse(searchParams);
+  const paramsImpl = schemas.searchParams().safeParse(searchParams);
+  const parsedParams = paramsImpl.success ? paramsImpl.data : {};
 
   return (
     <>
