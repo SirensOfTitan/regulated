@@ -2,7 +2,7 @@
 
 import Header from "app/components/general/Header";
 import * as collections from "app/utils/collections";
-import { Product, User, Accreditation } from "app/schemas";
+import { Product, User, Accreditation, Standard } from "app/schemas";
 import { Maybe } from "app/types";
 import styles from "./ProductDetails.module.css";
 import Heading from "../general/Heading";
@@ -15,11 +15,13 @@ interface Props {
   summary: Maybe<string>;
   allUsers: Map<string, User>;
   allAccreditations: Map<string, Accreditation>;
+  allStandards: Map<string, Standard>;
 }
 
 export default function ProductDetails({
   allUsers,
   allAccreditations,
+  allStandards,
   summary,
   product,
 }: Props) {
@@ -37,6 +39,15 @@ export default function ProductDetails({
         .map((u) => allAccreditations.get(u))
         .filter(collections.isNotNull),
     [allAccreditations, productAccreditations],
+  );
+
+  const productStandards = product.standards;
+  const standards = useMemo(
+    () =>
+      productStandards
+        .map((u) => allStandards.get(u))
+        .filter(collections.isNotNull),
+    [allStandards, productStandards],
   );
 
   return (
@@ -73,6 +84,14 @@ export default function ProductDetails({
           {accreditations.map((a) => (
             <Tag background="primary" key={a.id}>
               {a.type}
+            </Tag>
+          ))}
+        </TagGroup>
+        <Heading depth={2}>Standards</Heading>
+        <TagGroup>
+          {standards.map((a) => (
+            <Tag background="primary" key={a.id}>
+              {a.name}
             </Tag>
           ))}
         </TagGroup>

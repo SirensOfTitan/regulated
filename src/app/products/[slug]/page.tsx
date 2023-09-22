@@ -2,7 +2,7 @@ import ProductDetails from "app/components/product/ProductDetails";
 import * as airtable from "app/integrations/airtable";
 import * as collections from "app/utils/collections";
 import * as wikipedia from "app/integrations/wikipedia";
-import { allAccreditations } from "app/integrations/airtable/queries";
+import { allAccreditations, allStandards } from "app/integrations/airtable/queries";
 
 // Ensures that we properly show a 404 when hitting a route not included
 // in the set defined by generateStaticParams.
@@ -26,13 +26,14 @@ interface Params {
 export default async function Product({ params }: Params) {
   const { slug } = params;
 
-  const [product, allUsers, allAccreditations] = await Promise.all([
+  const [product, allUsers, allAccreditations, allStandards] = await Promise.all([
     airtable.cached.recordFromSlug({
       slug,
       tableName: "Products",
     }),
     airtable.cached.allUsers(),
     airtable.cached.allAccreditations(),
+    airtable.cached.allStandards(),
   ]);
 
   const extract =
@@ -50,6 +51,7 @@ export default async function Product({ params }: Params) {
       summary={extract}
       allUsers={allUsers}
       allAccreditations={allAccreditations}
+      allStandards={allStandards}
     />
   );
 }

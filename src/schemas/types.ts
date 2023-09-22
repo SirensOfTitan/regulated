@@ -16,6 +16,12 @@ export interface Product {
   users: string[];
 }
 
+export interface Standard {
+  id: string;
+  name: string;
+  users: string[];
+}
+
 export interface User {
   id: string;
   name: string;
