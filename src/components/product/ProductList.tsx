@@ -57,7 +57,22 @@ export default function ProductList({
           autoFocus={focus === "search"}
         />
         <p className={styles.headerText}>
-          Discover cloud products and infrastructure accredited for and selling into regulated industries. Information is aggregated from publicly availiable sources including the <a href="https://marketplace.fedramp.gov/products">FedRAMP Marketplace</a>, <a href="https://www.disa.mil/NewsandEvents">DISA press releases</a>, <a href="https://stateramp.org/product-list/">StateRAMP Authorized Products list</a>, <a href="https://www.usaspending.gov/">USAspending</a>, <a href="https://www.gsa.gov/buy-through-us/purchasing-programs/gsa-multiple-award-schedule">GSA Multiple Award Schedules</a>, and vendor websites.
+          Discover cloud products and infrastructure accredited for and selling
+          into regulated industries. Information is aggregated from publicly
+          availiable sources including the{" "}
+          <a href="https://marketplace.fedramp.gov/products">
+            FedRAMP Marketplace
+          </a>
+          , <a href="https://www.disa.mil/NewsandEvents">DISA press releases</a>
+          ,{" "}
+          <a href="https://stateramp.org/product-list/">
+            StateRAMP Authorized Products list
+          </a>
+          , <a href="https://www.usaspending.gov/">USAspending</a>,{" "}
+          <a href="https://www.gsa.gov/buy-through-us/purchasing-programs/gsa-multiple-award-schedule">
+            GSA Multiple Award Schedules
+          </a>
+          , and vendor websites.
         </p>
         <ProductListFilter
           filter={filter}

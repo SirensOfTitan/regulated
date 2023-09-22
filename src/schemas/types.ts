@@ -1,30 +1,16 @@
+import { z } from "zod";
 import { Maybe } from "app/types";
+import { product } from "./product";
+import { accreditation } from "./accreditation";
+import { standard } from "./standard";
+import { user } from "./user";
+import { searchParams } from "./searchParams";
 
-export interface Accreditation {
-  id: string;
-  type: string;
-  products: string[];
-  kind: "gov" | "industry";
-}
-
-export interface Product {
-  id: string;
-  name: string;
-  url: Maybe<string>;
-  slug: string;
-  accreditations: string[];
-  users: string[];
-}
-
-export interface Standard {
-  id: string;
-  name: string;
-  products: string[];
-}
-
-export interface User {
-  id: string;
-  name: string;
-  type: Maybe<string>;
-  abbreviation: Maybe<string>;
-}
+type SchemaType<T extends (...a: unknown[]) => z.ZodTypeAny> = z.infer<
+  ReturnType<T>
+>;
+export type Accreditation = SchemaType<typeof accreditation>;
+export type Product = SchemaType<typeof product>;
+export type Standard = SchemaType<typeof standard>;
+export type User = SchemaType<typeof user>;
+export type SearchParams = SchemaType<typeof searchParams>;
