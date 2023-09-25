@@ -1,5 +1,5 @@
 .popupItem {
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   display: flex;
   white-space: nowrap;
   outline: none;

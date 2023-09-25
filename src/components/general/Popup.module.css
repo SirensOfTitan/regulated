@@ -8,6 +8,11 @@
   box-shadow: var(--shadow-large);
   border-radius: 4px;
   padding: 1px;
-  max-height: 300px;
   overflow-y: auto;
+}
+
+@media (min-width: 767px) {
+  .popup {
+    max-height: 300px;
+  }
 }
