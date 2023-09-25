@@ -5,6 +5,7 @@
   font-weight: 500;
   border-radius: 4px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .actionItem:focus :global(.anyAction) {
@@ -24,6 +25,7 @@
   padding: 8px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .clear {
