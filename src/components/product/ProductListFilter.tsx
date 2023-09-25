@@ -3,6 +3,7 @@ import Dropdown from "../general/Dropdown";
 import Popup from "../general/Popup";
 import PopupRadioItem from "../general/PopupRadioItem";
 import styles from "./ProductListFilter.module.css";
+import * as collections from "app/utils/collections";
 import { Accreditation, User } from "app/schemas";
 import { useEffect, useMemo, useState } from "react";
 
@@ -42,7 +43,10 @@ export default function ProductListFilter({
   );
 
   const users = useMemo(
-    () => Array.from(usersMap, ([, value]) => value),
+    () =>
+      [...new Set(Array.from(usersMap, ([, value]) => value.type))].filter(
+        collections.isNotNull,
+      ),
     [usersMap],
   );
 
@@ -139,21 +143,21 @@ export default function ProductListFilter({
         }`}
         popup={
           <Popup title="Users">
-            {users.map((user) => {
+            {users.map((type) => {
               return (
                 <PopupRadioItem
-                  key={`${user.id}:${filter.users?.has(user.id)}`}
+                  key={`${type}:${filter.users?.has(type)}`}
                   type="checkbox"
-                  label={user.name}
+                  label={type}
                   onChange={(ev) => {
                     ev.preventDefault();
 
                     const newUsers = new Set(filter?.users ?? []);
 
                     if (ev.target.checked) {
-                      newUsers.add(user.id);
+                      newUsers.add(type);
                     } else {
-                      newUsers.delete(user.id);
+                      newUsers.delete(type);
                     }
 
                     onChange({
@@ -162,8 +166,8 @@ export default function ProductListFilter({
                     });
                   }}
                   name="users"
-                  value={user.id}
-                  checked={filter.users?.has(user.id) ?? false}
+                  value={type}
+                  checked={filter.users?.has(type) ?? false}
                 />
               );
             })}

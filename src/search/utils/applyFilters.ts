@@ -1,5 +1,5 @@
-import { Product } from "app/schemas";
-import { Filter, PackedOrderOption, OrderOption, OrderBy } from "../types";
+import { Product, User } from "app/schemas";
+import { Filter, PackedOrderOption, OrderBy } from "../types";
 import { Maybe } from "app/types";
 import * as strings from "app/utils/strings";
 import { unpackOption } from "./unpackOption";
@@ -31,8 +31,9 @@ function applyAccreditations(
 function applyUsers(
   product: Maybe<Product>,
   users: Maybe<Set<string>>,
+  usersMap: Maybe<Map<string, User>>,
 ): Maybe<Product> {
-  if (product == null) {
+  if (product == null || usersMap == null) {
     return null;
   }
 
@@ -41,7 +42,8 @@ function applyUsers(
     return product;
   }
 
-  if (collections.setIntersection(product.users, users).size <= 0) {
+  const userTypes = product.users.map((u) => usersMap.get(u)?.type);
+  if (collections.setIntersection(userTypes, users).size <= 0) {
     return null;
   }
 
@@ -88,11 +90,12 @@ function sort(products: Product[], order: Maybe<PackedOrderOption>): Product[] {
 
 interface ApplyFiltersOptions {
   filter: Filter;
+  usersMap: Map<string, User>;
   query: string;
 }
 export function applyFilters(
   products: Product[],
-  { filter, query }: ApplyFiltersOptions,
+  { filter, query, usersMap }: ApplyFiltersOptions,
 ) {
   return sort(
     products
@@ -103,6 +106,7 @@ export function applyFilters(
             filter.accreditations,
           ),
           filter.users,
+          usersMap,
         );
       })
       .filter(collections.isNotNull),

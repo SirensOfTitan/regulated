@@ -36,9 +36,10 @@ export default function ProductList({
     () =>
       applyFilters(products, {
         filter,
+        usersMap: users,
         query,
       }),
-    [products, filter, query],
+    [products, filter, query, users],
   );
 
   return (
@@ -49,7 +50,7 @@ export default function ProductList({
         ev.preventDefault();
       }}
     >
-    <div className={styles.productList}>
+      <div className={styles.productList}>
         <UpdateFilter filter={filter} query={query} />
         <Header
           query={queryImpl}
@@ -80,18 +81,18 @@ export default function ProductList({
           accreditations={accreditations}
           users={users}
         />
-      <ul className={styles.list}>
-        {filteredProducts.map((product) => (
-          <li key={product.id} className={styles.listItem}>
-            <ProductListItem
-              product={product}
-              accreditations={accreditations}
-              users={users}
-            />
-          </li>
-        ))}
-      </ul>
-    </div>
-      </form>
+        <ul className={styles.list}>
+          {filteredProducts.map((product) => (
+            <li key={product.id} className={styles.listItem}>
+              <ProductListItem
+                product={product}
+                accreditations={accreditations}
+                users={users}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </form>
   );
 }
