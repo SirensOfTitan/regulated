@@ -6,11 +6,7 @@ import styles from "./ProductListFilter.module.css";
 import { Accreditation, User } from "app/schemas";
 import { useEffect, useMemo, useState } from "react";
 
-interface OrderByLabelProps {
-  option: search.OrderOption;
-}
-
-function OrderByLabel({ option }: OrderByLabelProps) {
+function getOrderByLabel(option: search.OrderOption) {
   const [order, direction] = option;
   if (order === "productName" && direction === "asc") {
     return "Product name (A-Z)";
@@ -50,6 +46,12 @@ export default function ProductListFilter({
     [usersMap],
   );
 
+  const packedOrder = filter.order;
+  const unpackedOrder = useMemo(
+    () => (packedOrder == null ? null : search.utils.unpackOption(packedOrder)),
+    [packedOrder],
+  );
+
   const [isClient, setIsClient] = useState(false);
   useEffect(() => setIsClient(true), []);
 
@@ -57,7 +59,9 @@ export default function ProductListFilter({
     <article className={styles.filterRoot}>
       <Dropdown
         className={styles.actionItem}
-        action={"↕ Order by"}
+        action={`↕ ${
+          unpackedOrder == null ? "Order by" : getOrderByLabel(unpackedOrder)
+        }`}
         popup={
           <Popup>
             {search.ORDER_OPTIONS.map(([order, dir]) => {
@@ -81,7 +85,7 @@ export default function ProductListFilter({
                   type="radio"
                   value={optionID}
                   name="order"
-                  label={<OrderByLabel option={[order, dir]} />}
+                  label={getOrderByLabel([order, dir])}
                 />
               );
             })}
