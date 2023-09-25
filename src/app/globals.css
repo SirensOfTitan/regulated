@@ -21,3 +21,12 @@ body {
   font-size: 14px;
   color: var(--text-primary);
 }
+
+a:link {
+  color: var(--brand);
+  font-weight: 500;
+}
+
+a:visited {
+  color: var(--brand);
+}
