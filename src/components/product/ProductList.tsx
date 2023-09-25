@@ -42,14 +42,14 @@ export default function ProductList({
   );
 
   return (
+    <form
+      method="GET"
+      onSubmit={(ev) => {
+        // Don't allow form submission when client is hydrated.
+        ev.preventDefault();
+      }}
+    >
     <div className={styles.productList}>
-      <form
-        method="GET"
-        onSubmit={(ev) => {
-          // Don't allow form submission when client is hydrated.
-          ev.preventDefault();
-        }}
-      >
         <UpdateFilter filter={filter} query={query} />
         <Header
           query={queryImpl}
@@ -80,7 +80,6 @@ export default function ProductList({
           accreditations={accreditations}
           users={users}
         />
-      </form>
       <ul className={styles.list}>
         {filteredProducts.map((product) => (
           <li key={product.id} className={styles.listItem}>
@@ -93,5 +92,6 @@ export default function ProductList({
         ))}
       </ul>
     </div>
+      </form>
   );
 }

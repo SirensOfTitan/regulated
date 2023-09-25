@@ -2,6 +2,11 @@
   display: flex;
   padding: 8px;
   align-items: center;
+  position: sticky;
+  top: 0;
+  background: var(--bg-page-primary);
+  border-bottom: 1px solid var(--border-primary);
+  z-index: 99999;
 }
 
 .query {

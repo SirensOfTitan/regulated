@@ -22,6 +22,10 @@
 }
 
 .filterRoot {
+  background: var(--bg-page-alt);
+  z-index: 99999;
+  position: sticky;
+  top: 62px;
   padding: 8px;
   display: flex;
   flex-direction: row;
