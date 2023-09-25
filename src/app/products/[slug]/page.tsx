@@ -16,7 +16,9 @@ export async function generateStaticParams() {
   const products = await airtable.queries.allProducts(airtable.defaultClient);
 
   return products
-    .map((product) => (product.slug == null ? null : { slug: product.slug, name: product.name }))
+    .map((product) =>
+      product.slug == null ? null : { slug: product.slug, name: product.name },
+    )
     .filter(collections.isNotNull);
 }
 
@@ -32,9 +34,11 @@ export async function generateMetadata({ params }: Params) {
     tableName: "Products",
   });
 
-  return product == null ? {} : {
-    title: product.name,
-  }
+  return product == null
+    ? {}
+    : {
+        title: product.name,
+      };
 }
 
 export default async function Product({ params }: Params) {

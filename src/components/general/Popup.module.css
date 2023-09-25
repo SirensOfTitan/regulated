@@ -11,8 +11,37 @@
   overflow-y: auto;
 }
 
+.title {
+  display: none;
+  background: var(--bg-page-alt);
+  font-weight: 500;
+}
+
 @media (min-width: 767px) {
   .popup {
     max-height: 300px;
   }
+}
+
+@media (max-width: 767px) {
+  .title {
+    display: flex;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-primary);
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.close {
+  border: none;
+  width: 24px;
+  text-align: center;
+  border-radius: 4px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  background: var(--bg-page-primary);
+  border: 1px solid var(--border-primary);
 }

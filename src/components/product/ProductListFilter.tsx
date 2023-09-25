@@ -59,11 +59,11 @@ export default function ProductListFilter({
     <article className={styles.filterRoot}>
       <Dropdown
         className={styles.actionItem}
-        action={`↕ ${
+        anchor={`↕ ${
           unpackedOrder == null ? "Order by" : getOrderByLabel(unpackedOrder)
         }`}
         popup={
-          <Popup>
+          <Popup title="Order by">
             {search.ORDER_OPTIONS.map(([order, dir]) => {
               const optionID = search.utils.packOption([order, dir]);
               const checked = filter.order === optionID;
@@ -94,11 +94,11 @@ export default function ProductListFilter({
       />
       <Dropdown
         className={styles.actionItem}
-        action={`👩‍⚖️ Accreditations ${
+        anchor={`👩‍⚖️ Accreditations ${
           filter.accreditations?.size ? `(${filter.accreditations.size})` : ""
         }`}
         popup={
-          <Popup>
+          <Popup title="Accreditations">
             {accreditations.map((acc) => {
               return (
                 <PopupRadioItem
@@ -134,11 +134,11 @@ export default function ProductListFilter({
       />
       <Dropdown
         className={styles.actionItem}
-        action={`👨‍👩‍👧‍👦 Users ${
+        anchor={`👨‍👩‍👧‍👦 Users ${
           filter.users?.size ? `(${filter.users.size})` : ""
         }`}
         popup={
-          <Popup>
+          <Popup title="Users">
             {users.map((user) => {
               return (
                 <PopupRadioItem

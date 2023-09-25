@@ -4,12 +4,14 @@ import styles from "./Dropdown.module.css";
 
 interface Props {
   className?: string;
-  action: ReactNode;
+  /** The anchor element that, upon focus, will show this dropdown. */
+  anchor: ReactNode;
+  /** The popup that should be shown when this dropdown is focused. */
   popup: ReactNode;
 }
 
 /** A pure CSS contextual dialog */
-export default function Dropdown({ className, action, popup }: Props) {
+export default function Dropdown({ className, anchor: action, popup }: Props) {
   return (
     <div
       className={browser.classnames(styles.dropdownRoot, className)}
