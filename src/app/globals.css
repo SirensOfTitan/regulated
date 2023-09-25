@@ -1,7 +1,9 @@
 @import "node_modules/modern-normalize/modern-normalize.css";
 
-.main {
+main {
   display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
   flex: 1 1 auto;
   width: 100%;
   margin-left: auto;
@@ -17,6 +19,8 @@
 }
 
 body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.618;
   background-color: var(--bg-page-alt);
   font-size: 14px;
