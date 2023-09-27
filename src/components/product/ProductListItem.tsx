@@ -30,6 +30,7 @@ export default function ProductListItem({
           <ProductUsers product={product} users={users} />
         </div>
       </div>
+      <div className={styles.linkIcon} />
     </article>
   );
 }
