@@ -20,15 +20,15 @@ export default function ProductListItem({
   return (
     <article className={styles.productListItem}>
       <Link href={`/products/${product.slug}`} className={styles.anchor} />
-      <div>
-        <h2 className={styles.name}>
-          {product.name}
-        </h2>
-        <ProductAccreditations
-          product={product}
-          accreditations={accreditations}
-        />
-        <ProductUsers product={product} users={users} />
+      <div className={styles.content}>
+        <h2 className={styles.name}>{product.name}</h2>
+        <div className={styles.info}>
+          <ProductAccreditations
+            product={product}
+            accreditations={accreditations}
+          />
+          <ProductUsers product={product} users={users} />
+        </div>
       </div>
     </article>
   );

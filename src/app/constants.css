@@ -3,6 +3,7 @@
     "Helvetica Neue", helvetica, arial, sans-serif;
   --palatinate-blue: #4b3ee0;
   --columbia-blue: #c0d6df;
+  --portage: #98a0f3;
   --licorice: #22181c;
   --davys-gray: #aca9b6;
   --chestnut: #a5402d;
@@ -24,6 +25,7 @@
   --text-primary: var(--licorice);
   --text-secondary: var(--davys-grey);
   --brand: var(--palatinate-blue);
+  --brand-faded: var(--portage);
   --text-link: var(--palatinate-blue);
   --bg-page-primary: var(--baby-powder);
   --bg-page-alt: var(--black-squeeze);

@@ -1,12 +1,12 @@
 .productListItem {
-  background: var(--bg-page-primary);
+  background: var(--brand);
   border-radius: 8px;
   display: grid;
   flex: 1 1 auto;
   box-shadow: var(--shadow-small);
   cursor: pointer;
-  padding: 8px 0;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .productListItem:hover {
@@ -19,9 +19,24 @@
   min-width: 0;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  border-radius: 8px;
+  background: var(--bg-page-primary);
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+
 .name {
   font-size: 14px;
-  padding: 0px 8px 8px 8px;
+  padding: 16px;
+  margin: 0;
+  color: var(--white);
+  font-weight: 500;
 }
 
 .anchor {

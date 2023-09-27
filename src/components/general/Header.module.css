@@ -15,9 +15,17 @@
   background: var(--bg-page-alt);
   border-radius: 4px;
   align-items: center;
+  box-shadow: 0 0 0 1px var(--border-primary);
   font-size: 16px;
   padding: 0 8px;
   display: flex;
+}
+
+.query:focus-within {
+  box-shadow:
+    0 0 0 1px var(--brand),
+    0 0 0 4px var(--brand-faded);
+  transition: box-shadow 0.15s;
 }
 
 .icon {

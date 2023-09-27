@@ -7,7 +7,7 @@
   display: grid;
   column-gap: 8px;
   row-gap: 8px;
-  grid-template-columns: repeat(auto-fill, minmax(80vw, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   flex-direction: column;
   width: 100%;
   margin-block-start: 0;
@@ -19,12 +19,6 @@
 .search {
   display: flex;
   flex-direction: column;
-}
-
-@media (min-width: 860px) {
-  .list.list {
-    grid-template-columns: repeat(auto-fill, minmax(200px, calc(33% - 4px)));
-  }
 }
 
 .productList {
