@@ -1,16 +1,31 @@
 .productListItem {
   background: var(--bg-page-primary);
   border-radius: 8px;
-  display: flex;
+  display: grid;
   flex: 1 1 auto;
-  flex-direction: column;
   box-shadow: var(--shadow-small);
+  cursor: pointer;
   padding: 8px 0;
+  pointer-events: none;
+}
+
+.productListItem:hover {
+  box-shadow: var(--shadow-medium);
+  transition: ease-in-out 0.2s;
+}
+
+.productListItem > * {
+  grid-area: 1/1;
+  min-width: 0;
 }
 
 .name {
   font-size: 14px;
   padding: 0px 8px 8px 8px;
+}
+
+.anchor {
+  pointer-events: auto;
 }
 
 .tagCloud {

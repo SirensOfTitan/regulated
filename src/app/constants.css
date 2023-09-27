@@ -19,6 +19,7 @@
 .lightTheme,
 :root {
   --shadow-small: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 3px 8px 0px rgba(0, 0, 0, 0.15);
   --shadow-large: 0 4px 16px 0px rgba(0, 0, 0, 0.15);
   --text-primary: var(--licorice);
   --text-secondary: var(--davys-grey);

@@ -19,14 +19,17 @@ export default function ProductListItem({
 }: Props) {
   return (
     <article className={styles.productListItem}>
-      <h2 className={styles.name}>
-        <Link href={`/products/${product.slug}`}>{product.name}</Link>
-      </h2>
-      <ProductAccreditations
-        product={product}
-        accreditations={accreditations}
-      />
-      <ProductUsers product={product} users={users} />
+      <Link href={`/products/${product.slug}`} className={styles.anchor} />
+      <div>
+        <h2 className={styles.name}>
+          {product.name}
+        </h2>
+        <ProductAccreditations
+          product={product}
+          accreditations={accreditations}
+        />
+        <ProductUsers product={product} users={users} />
+      </div>
     </article>
   );
 }
