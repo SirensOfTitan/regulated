@@ -1,12 +1,20 @@
+.anchor,
+.productListItem {
+  border-radius: 8px;
+}
+
 .productListItem {
   background: var(--brand);
-  border-radius: 8px;
   display: grid;
   flex: 1 1 auto;
   box-shadow: var(--shadow-small);
   cursor: pointer;
   pointer-events: none;
   position: relative;
+}
+
+.anchor:focus {
+  outline: 4px solid var(--brand-faded);
 }
 
 .linkIcon {
