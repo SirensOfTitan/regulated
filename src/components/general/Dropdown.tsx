@@ -15,9 +15,9 @@ export default function Dropdown({ className, anchor: action, popup }: Props) {
   return (
     <div
       className={browser.classnames(styles.dropdownRoot, className)}
-      tabIndex={1}
+      tabIndex={0}
     >
-      <i className={styles.closeMask} tabIndex={1} />
+      <i className={styles.closeMask} tabIndex={0} />
       <a className={browser.classnames(styles.action, "anyAction")}>{action}</a>
       <div className={styles.popup}>{popup}</div>
       <div className={styles.overlay} />
