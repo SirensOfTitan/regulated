@@ -65,7 +65,7 @@ export default function ProductListFilter({
 
   return (
     <article className={styles.filterRoot}>
-      <Container>
+      <Container className={styles.filterContainer}>
         <Dropdown
           className={styles.actionItem}
           anchor={`↕ ${
