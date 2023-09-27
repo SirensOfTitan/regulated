@@ -22,7 +22,8 @@
 }
 
 .filterRoot {
-  background: var(--bg-page-alt);
+  background: #f3f7fb80;
+  backdrop-filter: blur(10px);
   z-index: 99999;
   position: sticky;
   top: 62px;
