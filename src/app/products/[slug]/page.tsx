@@ -2,10 +2,6 @@ import ProductDetails from "app/components/product/ProductDetails";
 import * as airtable from "app/integrations/airtable";
 import * as collections from "app/utils/collections";
 import * as wikipedia from "app/integrations/wikipedia";
-import {
-  allAccreditations,
-  allStandards,
-} from "app/integrations/airtable/queries";
 
 // Ensures that we properly show a 404 when hitting a route not included
 // in the set defined by generateStaticParams.

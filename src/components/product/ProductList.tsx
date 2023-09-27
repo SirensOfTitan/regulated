@@ -15,6 +15,7 @@ interface Props {
   products: Product[];
   accreditations: Map<string, Accreditation>;
   users: Map<string, User>;
+  descriptions: Map<string, Maybe<string>>;
   initialQuery: string;
   initialFilter: search.Filter;
   focus?: Maybe<"search">;
@@ -23,6 +24,7 @@ interface Props {
 export default function ProductList({
   products,
   accreditations,
+  descriptions,
   users,
   initialFilter,
   initialQuery,
@@ -92,6 +94,7 @@ export default function ProductList({
                 <ProductListItem
                   product={product}
                   accreditations={accreditations}
+                  descriptions={descriptions}
                   users={users}
                 />
               </li>

@@ -12,10 +12,12 @@ export const product = () =>
       "Other Standards": z.optional(z.array(z.string())),
       "Used By": z.optional(z.array(z.string())),
       "Wikipedia Slug": z.optional(z.string()),
+      Description: z.optional(z.string()),
     })
     .transform((obj) => ({
       id: obj["ID"],
       name: obj["Name"],
+      description: obj["Description"],
       url: obj["URL"],
       slug: obj["Slug"],
       accreditations: [
