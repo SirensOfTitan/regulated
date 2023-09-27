@@ -4,9 +4,15 @@
   align-items: center;
   position: sticky;
   top: 0;
-  background: var(--bg-page-primary);
+  background: #fafcfdee;
   border-bottom: 1px solid var(--border-primary);
   z-index: 99999;
+  backdrop-filter: blur(10px);
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
 }
 
 .query {

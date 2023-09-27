@@ -9,6 +9,7 @@ import * as search from "app/search";
 import { applyFilters } from "app/search/utils/applyFilters";
 import Header from "../general/Header";
 import { Maybe } from "app/types";
+import Container from "../general/Container";
 
 interface Props {
   products: Product[];
@@ -57,41 +58,46 @@ export default function ProductList({
           onChangeQuery={setQuery}
           autoFocus={focus === "search"}
         />
-        <p className={styles.headerText}>
-          Discover cloud products and infrastructure accredited for and selling
-          into regulated industries. Information is aggregated from publicly
-          availiable sources including the{" "}
-          <a href="https://marketplace.fedramp.gov/products">
-            FedRAMP Marketplace
-          </a>
-          , <a href="https://www.disa.mil/NewsandEvents">DISA press releases</a>
-          ,{" "}
-          <a href="https://stateramp.org/product-list/">
-            StateRAMP Authorized Products list
-          </a>
-          , <a href="https://www.usaspending.gov/">USAspending</a>,{" "}
-          <a href="https://www.gsa.gov/buy-through-us/purchasing-programs/gsa-multiple-award-schedule">
-            GSA Multiple Award Schedules
-          </a>
-          , and vendor websites.
-        </p>
+        <Container>
+          <p className={styles.headerText}>
+            Discover cloud products and infrastructure accredited for and
+            selling into regulated industries. Information is aggregated from
+            publicly availiable sources including the{" "}
+            <a href="https://marketplace.fedramp.gov/products">
+              FedRAMP Marketplace
+            </a>
+            ,{" "}
+            <a href="https://www.disa.mil/NewsandEvents">DISA press releases</a>
+            ,{" "}
+            <a href="https://stateramp.org/product-list/">
+              StateRAMP Authorized Products list
+            </a>
+            , <a href="https://www.usaspending.gov/">USAspending</a>,{" "}
+            <a href="https://www.gsa.gov/buy-through-us/purchasing-programs/gsa-multiple-award-schedule">
+              GSA Multiple Award Schedules
+            </a>
+            , and vendor websites.
+          </p>
+        </Container>
         <ProductListFilter
           filter={filter}
           onChange={setFilter}
           accreditations={accreditations}
           users={users}
         />
-        <ul className={styles.list}>
-          {filteredProducts.map((product) => (
-            <li key={product.id} className={styles.listItem}>
-              <ProductListItem
-                product={product}
-                accreditations={accreditations}
-                users={users}
-              />
-            </li>
-          ))}
-        </ul>
+        <Container>
+          <ul className={styles.list}>
+            {filteredProducts.map((product) => (
+              <li key={product.id} className={styles.listItem}>
+                <ProductListItem
+                  product={product}
+                  accreditations={accreditations}
+                  users={users}
+                />
+              </li>
+            ))}
+          </ul>
+        </Container>
       </div>
     </form>
   );

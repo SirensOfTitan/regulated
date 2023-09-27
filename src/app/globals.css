@@ -8,7 +8,6 @@ main {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1280px;
   height: 100vh;
   flex-direction: column;
   position: relative;

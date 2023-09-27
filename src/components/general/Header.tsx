@@ -4,6 +4,7 @@ import { Product } from "app/schemas";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MutableRefObject, useEffect, useRef } from "react";
+import Container from "./Container";
 
 interface Props {
   /** The query being typed, should not be debounced or deferred */
@@ -36,37 +37,39 @@ export default function Header({
 
   return (
     <header className={styles.header}>
-      <a className={styles.logo} href="/">
-        regulated.app
-      </a>
-      <div className={styles.query}>
-        <span className={styles.icon}>🔎</span>
-        {product == null ? null : (
-          <span className={styles.productToken}>
-            <span className={styles.name}>{product.name}</span>
-            <Link className={styles.clear} href="/">
-              x
-            </Link>
-          </span>
-        )}
-        <input
-          name="query"
-          type="text"
-          ref={inputRef}
-          value={query}
-          onKeyDown={(ev) => {
-            if (ev.key !== "Backspace") {
-              return;
-            }
+      <Container className={styles.headerContainer}>
+        <a className={styles.logo} href="/">
+          regulated.app
+        </a>
+        <div className={styles.query}>
+          <span className={styles.icon}>🔎</span>
+          {product == null ? null : (
+            <span className={styles.productToken}>
+              <span className={styles.name}>{product.name}</span>
+              <Link className={styles.clear} href="/">
+                x
+              </Link>
+            </span>
+          )}
+          <input
+            name="query"
+            type="text"
+            ref={inputRef}
+            value={query}
+            onKeyDown={(ev) => {
+              if (ev.key !== "Backspace") {
+                return;
+              }
 
-            router.push("/?focus=search");
-          }}
-          onChange={(ev) => {
-            ev.preventDefault();
-            onChangeQuery(ev.target.value);
-          }}
-        />
-      </div>
+              router.push("/?focus=search");
+            }}
+            onChange={(ev) => {
+              ev.preventDefault();
+              onChangeQuery(ev.target.value);
+            }}
+          />
+        </div>
+      </Container>
     </header>
   );
 }

@@ -9,6 +9,7 @@ import Heading from "../general/Heading";
 import { useMemo } from "react";
 import TagGroup from "app/components/general/TagGroup";
 import Tag from "app/components/general/Tag";
+import Container from "../general/Container";
 
 interface Props {
   product: Product;
@@ -53,49 +54,50 @@ export default function ProductDetails({
   return (
     <>
       <Header query="" onChangeQuery={() => null} product={product} />
-
-      <article className={styles.productDetails}>
-        {summary == null ? null : (
-          <section className={styles.summary}>
-            <Heading depth={2}>About</Heading>
-            {summary}
-          </section>
-        )}
-        <hr />
-        <Heading depth={2}>Users</Heading>
-        <table>
-          <thead>
-            <tr>
-              <td>Name</td>
-              <td>Type</td>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((u) => (
-              <tr key={u.id}>
-                <td>{u.name}</td>
-                <td>{u.type ?? "-"}</td>
+      <Container>
+        <article className={styles.productDetails}>
+          {summary == null ? null : (
+            <section className={styles.summary}>
+              <Heading depth={2}>About</Heading>
+              {summary}
+            </section>
+          )}
+          <hr />
+          <Heading depth={2}>Users</Heading>
+          <table>
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td>Type</td>
               </tr>
+            </thead>
+            <tbody>
+              {users.map((u) => (
+                <tr key={u.id}>
+                  <td>{u.name}</td>
+                  <td>{u.type ?? "-"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <Heading depth={2}>Accreditations</Heading>
+          <TagGroup>
+            {accreditations.map((a) => (
+              <Tag background="primary" key={a.id}>
+                {a.type}
+              </Tag>
             ))}
-          </tbody>
-        </table>
-        <Heading depth={2}>Accreditations</Heading>
-        <TagGroup>
-          {accreditations.map((a) => (
-            <Tag background="primary" key={a.id}>
-              {a.type}
-            </Tag>
-          ))}
-        </TagGroup>
-        <Heading depth={2}>Standards</Heading>
-        <TagGroup>
-          {standards.map((a) => (
-            <Tag background="primary" key={a.id}>
-              {a.name}
-            </Tag>
-          ))}
-        </TagGroup>
-      </article>
+          </TagGroup>
+          <Heading depth={2}>Standards</Heading>
+          <TagGroup>
+            {standards.map((a) => (
+              <Tag background="primary" key={a.id}>
+                {a.name}
+              </Tag>
+            ))}
+          </TagGroup>
+        </article>
+      </Container>
     </>
   );
 }
