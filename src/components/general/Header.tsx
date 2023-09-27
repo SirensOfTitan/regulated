@@ -40,6 +40,7 @@ export default function Header({
         regulated.app
       </a>
       <div className={styles.query}>
+        <span className={styles.icon}>🔎</span>
         {product == null ? null : (
           <span className={styles.productToken}>
             <span className={styles.name}>{product.name}</span>
