@@ -19,7 +19,11 @@ export default function ProductListItem({
 }: Props) {
   return (
     <article className={styles.productListItem}>
-      <Link href={`/products/${product.slug}`} className={styles.anchor} aria-label={`Product details for ${product.name}`} />
+      <Link
+        href={`/products/${product.slug}`}
+        className={styles.anchor}
+        aria-label={`Product details for ${product.name}`}
+      />
       <div className={styles.content}>
         <h2 className={styles.name}>{product.name}</h2>
         <div className={styles.info}>

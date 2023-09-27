@@ -3,6 +3,14 @@
   outline: none;
 }
 
+.dropdownContainer {
+  display: inline-grid;
+}
+
+.dropdownContainer > * {
+  grid-area: 1/1;
+}
+
 .popup {
   position: absolute;
   top: calc(100% + 2px);
@@ -12,25 +20,20 @@
   display: flex;
 }
 
-.dropdownRoot:focus .popup {
+.dropdownRoot:focus-within .popup {
   outline: none;
   visibility: visible;
   opacity: 1;
 }
 
-.dropdownRoot .closeMask {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.dropdownContainer .closeMask {
   opacity: 0;
   cursor: pointer;
   z-index: 10;
   display: none;
 }
 
-.dropdownRoot:focus .closeMask {
+.dropdownRoot:focus-within ~ .closeMask {
   display: inline-block;
 }
 
@@ -57,7 +60,7 @@
 }
 
 @media (max-width: 767px) {
-  .dropdownRoot:focus .overlay {
+  .dropdownRoot:focus-within .overlay {
     display: block;
   }
 

@@ -13,14 +13,18 @@ interface Props {
 /** A pure CSS contextual dialog */
 export default function Dropdown({ className, anchor: action, popup }: Props) {
   return (
-    <div
-      className={browser.classnames(styles.dropdownRoot, className)}
-      tabIndex={0}
-    >
+    <div className={styles.dropdownContainer}>
+      <div
+        className={browser.classnames(styles.dropdownRoot, className)}
+        tabIndex={0}
+      >
+        <a className={browser.classnames(styles.action, "anyAction")}>
+          {action}
+        </a>
+        <div className={styles.popup}>{popup}</div>
+        <div className={styles.overlay} />
+      </div>
       <i className={styles.closeMask} tabIndex={0} />
-      <a className={browser.classnames(styles.action, "anyAction")}>{action}</a>
-      <div className={styles.popup}>{popup}</div>
-      <div className={styles.overlay} />
     </div>
   );
 }
