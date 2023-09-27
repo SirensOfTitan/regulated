@@ -38,7 +38,7 @@ export default function ProductListFilter({
   users: usersMap,
 }: Props) {
   const accreditations = useMemo(
-    () => Array.from(accreditationsMap, ([, value]) => value),
+    () => Array.from(accreditationsMap, ([, value]) => value).filter((v) => v.includeInFilter),
     [accreditationsMap],
   );
 
