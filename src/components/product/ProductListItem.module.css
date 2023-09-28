@@ -10,6 +10,9 @@
 .productListItem {
   background: var(--brand);
   display: grid;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  grid-row: auto / span 4;
   flex: 1 1 auto;
   box-shadow: var(--shadow-small);
   cursor: pointer;
@@ -56,14 +59,18 @@
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: 1 / span 4;
+  grid-template-rows: subgrid;
 }
 
 .info {
   border-radius: 8px;
   background: var(--bg-page-primary);
   overflow: hidden;
+  grid-row: auto / span 3;
+  grid-template-rows: subgrid;
+  display: grid;
   flex: 1 1 auto;
 }
 
@@ -71,12 +78,14 @@
   font-size: 14px;
   padding: 16px;
   margin: 0;
+  grid-row: auto / span 1;
   color: var(--white);
   font-weight: 500;
 }
 
 .anchor {
   pointer-events: auto;
+  grid-row: 1 / span 4;
 }
 
 .tagCloud {

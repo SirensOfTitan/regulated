@@ -8,6 +8,7 @@
   column-gap: 8px;
   row-gap: 8px;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-rows: span 4;
   flex-direction: column;
   width: 100%;
   margin-block-start: 0;

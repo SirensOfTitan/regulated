@@ -88,19 +88,16 @@ export default function ProductList({
           accreditations={accreditations}
           users={users}
         />
-        <Container>
-          <ul className={styles.list}>
-            {filteredProducts.map((product) => (
-              <li key={product.id} className={styles.listItem}>
-                <ProductListItem
-                  product={product}
-                  accreditations={accreditations}
-                  descriptions={descriptions}
-                  users={users}
-                />
-              </li>
-            ))}
-          </ul>
+        <Container className={styles.list}>
+          {filteredProducts.map((product) => (
+            <ProductListItem
+              key={product.id}
+              product={product}
+              accreditations={accreditations}
+              descriptions={descriptions}
+              users={users}
+            />
+          ))}
         </Container>
       </div>
     </form>
