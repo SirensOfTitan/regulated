@@ -89,7 +89,6 @@ export default function ProductUsers({ users: usersMap, product }: Props) {
           return (
             <Image
               key={user.id}
-              placeholder="blur"
               className={styles.image}
               fill
               src={`/users/${logo}`}

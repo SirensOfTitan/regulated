@@ -1,5 +1,5 @@
 "use client";
-import { useDeferredValue, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import ProductListItem from "./ProductListItem";
 import styles from "./ProductList.module.css";
 import { Accreditation, Product, User } from "app/schemas";
@@ -10,6 +10,7 @@ import { applyFilters } from "app/search/utils/applyFilters";
 import Header from "../general/Header";
 import { Maybe } from "app/types";
 import Container from "../general/Container";
+import { useDebounce } from "use-debounce";
 
 interface Props {
   products: Product[];
@@ -31,7 +32,7 @@ export default function ProductList({
   focus,
 }: Props) {
   const [queryImpl, setQuery] = useState(initialQuery);
-  const query = useDeferredValue(queryImpl);
+  const [query] = useDebounce(queryImpl, 100);
 
   const [filter, setFilter] = useState(initialFilter);
 
