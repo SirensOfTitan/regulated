@@ -1,0 +1,43 @@
+.usedContainer {
+  height: 64px;
+  margin: 8px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+}
+
+.usedContainer .image {
+  max-width: 64px;
+  width: auto;
+  height: auto;
+  object-fit: scale-down;
+  position: relative !important;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.image + * {
+  margin-left: 8px;
+}
+
+.remaining {
+  background: var(--bg-page-primary);
+  color: var(--brand);
+  font-weight: bold;
+  width: 64px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.users {
+  background: var(--bg-page-alt);
+  padding: 4px 16px;
+  border: 1px solid var(--border-secondary);
+  border-left: none;
+  border-right: none;
+}

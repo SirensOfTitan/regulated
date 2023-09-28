@@ -8,6 +8,7 @@ export const user = () =>
       Abbreviation: z.optional(z.string()),
       Products: z.optional(z.array(z.string())),
       Type: z.optional(z.string()),
+      Slug: z.string(),
     })
     .transform((obj) => ({
       id: obj["ID"],
@@ -15,4 +16,5 @@ export const user = () =>
       abbreviation: obj["Abbreviation"] ?? "",
       products: obj["Products"] ?? [],
       type: obj["Type"],
+      slug: obj["Slug"],
     }));

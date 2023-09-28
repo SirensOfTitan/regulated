@@ -39,11 +39,11 @@ export default function ProductListItem({
           {description == null ? null : (
             <div className={styles.description}>{description}</div>
           )}
+          <ProductUsers product={product} users={users} />
           <ProductAccreditations
             product={product}
             accreditations={accreditations}
           />
-          <ProductUsers product={product} users={users} />
         </div>
       </div>
       <div className={styles.linkIcon} />

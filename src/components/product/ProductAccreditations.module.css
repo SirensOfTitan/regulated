@@ -1,6 +1,3 @@
 .container {
-  background: var(--bg-row);
-  border: 1px solid var(--border-secondary);
-  border-left: none;
-  border-right: none;
+  margin: 8px;
 }
