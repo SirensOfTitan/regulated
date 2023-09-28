@@ -65,7 +65,8 @@
 }
 
 .info {
-  border-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   background: var(--bg-page-primary);
   overflow: hidden;
   grid-row: auto / span 3;

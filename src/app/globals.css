@@ -35,3 +35,12 @@ a:link {
 a:visited {
   color: var(--brand);
 }
+
+/** Avoid zoom on click into input */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}
