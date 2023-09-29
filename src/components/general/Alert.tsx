@@ -17,6 +17,7 @@ export default function Alert({ kind, message }: Props) {
         [styles.error]: kind === "error",
         [styles.success]: kind === "success",
       })}
+      suppressHydrationWarning
     >
       {message}
       <span className={styles.spacer} />

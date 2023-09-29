@@ -11,6 +11,7 @@ import TagGroup from "app/components/general/TagGroup";
 import Tag from "app/components/general/Tag";
 import Container from "../general/Container";
 import Alert from "../general/Alert";
+import ProductHeader from "./ProductHeader";
 
 type ActionKind = Maybe<"feedback">;
 interface ActionAlertProps {
@@ -82,6 +83,7 @@ export default function ProductDetails({
       <Header query="" onChangeQuery={() => null} product={product} />
       <Container>
         <ActionAlert action={action} />
+        <ProductHeader product={product} />
         <article className={styles.productDetails}>
           {summary == null ? null : (
             <section className={styles.summary}>
