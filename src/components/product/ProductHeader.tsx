@@ -46,6 +46,7 @@ export default function ProductHeader({ product }: Props) {
             🔗 Visit website
           </a>
         )}
+        <div className={styles.spacer} />
         <Link
           className={styles.button}
           href={`/products/${product.slug}/feedback`}
