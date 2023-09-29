@@ -93,7 +93,7 @@ export default function ProductDetails({
           </table>
           <Heading depth={2}>Links</Heading>
           {links.map((l) => (
-            <p><a href={l.url}>{l.name}</a></p>
+            <p key={l.id}><a href={l.url}>{l.name}</a></p>
           ))}
           <Heading depth={2}>Accreditations</Heading>
           <TagGroup>
