@@ -60,6 +60,8 @@ function slugToImageName(slug: string): Maybe<string> {
       return "iowa.svg";
     case "state-of-new-jersey":
       return "nj.svg";
+    case "the-white-house":
+      return "white_house.jpg";
     case "university-of-washington-school-of-medicine":
       return "washington_medicine.jpg";
   }
