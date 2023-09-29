@@ -5,7 +5,6 @@ export const product = () =>
     .object({
       ID: z.string(),
       Name: z.string(),
-      URL: z.optional(z.string().url()),
       Slug: z.string(),
       "Government Accreditations": z.optional(z.array(z.string())),
       "Industry Accreditations": z.optional(z.array(z.string())),
@@ -19,7 +18,6 @@ export const product = () =>
       id: obj["ID"],
       name: obj["Name"],
       description: obj["Description"],
-      url: obj["URL"],
       slug: obj["Slug"],
       accreditations: [
         ...(obj["Government Accreditations"] ?? []),
