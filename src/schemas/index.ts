@@ -1,4 +1,5 @@
 export * from "./accreditation";
+export * from "./link";
 export * from "./product";
 export * from "./standard";
 export * from "./types";

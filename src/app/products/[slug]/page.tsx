@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Params) {
 export default async function Product({ params }: Params) {
   const { slug } = params;
 
-  const [product, allUsers, allAccreditations, allStandards] =
+  const [product, allUsers, allAccreditations, allLinks, allStandards] =
     await Promise.all([
       airtable.cached.recordFromSlug({
         slug,
@@ -48,6 +48,7 @@ export default async function Product({ params }: Params) {
       }),
       airtable.cached.allUsers(),
       airtable.cached.allAccreditations(),
+      airtable.cached.allLinks(),
       airtable.cached.allStandards(),
     ]);
 
@@ -66,6 +67,7 @@ export default async function Product({ params }: Params) {
       summary={extract}
       allUsers={allUsers}
       allAccreditations={allAccreditations}
+      allLinks={allLinks}
       allStandards={allStandards}
     />
   );

@@ -2,7 +2,7 @@
 
 import Header from "app/components/general/Header";
 import * as collections from "app/utils/collections";
-import { Product, User, Accreditation, Standard } from "app/schemas";
+import { Product, User, Accreditation, Link, Standard } from "app/schemas";
 import { Maybe } from "app/types";
 import styles from "./ProductDetails.module.css";
 import Heading from "../general/Heading";
@@ -16,12 +16,14 @@ interface Props {
   summary: Maybe<string>;
   allUsers: Map<string, User>;
   allAccreditations: Map<string, Accreditation>;
+  allLinks: Map<string, Link>;
   allStandards: Map<string, Standard>;
 }
 
 export default function ProductDetails({
   allUsers,
   allAccreditations,
+  allLinks,
   allStandards,
   summary,
   product,
@@ -40,6 +42,15 @@ export default function ProductDetails({
         .map((u) => allAccreditations.get(u))
         .filter(collections.isNotNull),
     [allAccreditations, productAccreditations],
+  );
+
+  const productLinks = product.links;
+  const links = useMemo(
+    () =>
+    productLinks
+      .map((u) => allLinks.get(u))
+      .filter(collections.isNotNull),
+  [allLinks, productLinks],
   );
 
   const productStandards = product.standards;
@@ -80,6 +91,10 @@ export default function ProductDetails({
               ))}
             </tbody>
           </table>
+          <Heading depth={2}>Links</Heading>
+          {links.map((l) => (
+            <a href={l.url}>{l.name}</a>
+          ))}
           <Heading depth={2}>Accreditations</Heading>
           <TagGroup>
             {accreditations.map((a) => (
