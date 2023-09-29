@@ -1,0 +1,29 @@
+.alert {
+  display: flex;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 8px;
+  background: var(--brand);
+  box-shadow: var(--shadow-medium);
+  color: var(--white);
+}
+
+.alert.error {
+  background: var(--bg-red);
+}
+
+.alert.success {
+  background: var(--bg-green);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.dismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--white);
+  font-weight: 500;
+}

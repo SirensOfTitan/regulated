@@ -10,6 +10,21 @@ import { useMemo } from "react";
 import TagGroup from "app/components/general/TagGroup";
 import Tag from "app/components/general/Tag";
 import Container from "../general/Container";
+import Alert from "../general/Alert";
+
+type ActionKind = Maybe<"feedback">;
+interface ActionAlertProps {
+  action?: ActionKind;
+}
+function ActionAlert({ action }: ActionAlertProps) {
+  if (action == null) {
+    return null;
+  }
+
+  return (
+    <Alert kind="success" message="Your feedback was submitted successfully." />
+  );
+}
 
 interface Props {
   product: Product;
@@ -18,6 +33,7 @@ interface Props {
   allAccreditations: Map<string, Accreditation>;
   allLinks: Map<string, Link>;
   allStandards: Map<string, Standard>;
+  action: ActionKind;
 }
 
 export default function ProductDetails({
@@ -27,6 +43,7 @@ export default function ProductDetails({
   allStandards,
   summary,
   product,
+  action,
 }: Props) {
   const productUsers = product.users;
   const users = useMemo(
@@ -47,10 +64,8 @@ export default function ProductDetails({
   const productLinks = product.links;
   const links = useMemo(
     () =>
-    productLinks
-      .map((u) => allLinks.get(u))
-      .filter(collections.isNotNull),
-  [allLinks, productLinks],
+      productLinks.map((u) => allLinks.get(u)).filter(collections.isNotNull),
+    [allLinks, productLinks],
   );
 
   const productStandards = product.standards;
@@ -66,6 +81,7 @@ export default function ProductDetails({
     <>
       <Header query="" onChangeQuery={() => null} product={product} />
       <Container>
+        <ActionAlert action={action} />
         <article className={styles.productDetails}>
           {summary == null ? null : (
             <section className={styles.summary}>
@@ -93,7 +109,9 @@ export default function ProductDetails({
           </table>
           <Heading depth={2}>Links</Heading>
           {links.map((l) => (
-            <p key={l.id}><a href={l.url}>{l.name}</a></p>
+            <p key={l.id}>
+              <a href={l.url}>{l.name}</a>
+            </p>
           ))}
           <Heading depth={2}>Accreditations</Heading>
           <TagGroup>

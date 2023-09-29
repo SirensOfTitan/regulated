@@ -10,11 +10,12 @@
   --baby-powder: #fdfffc;
   --black-squeeze: #f3f7fb;
   --frosty-blue: #fafcfd;
+  --persimmon: #ff5a5a;
   --ethereal-white: #e6eff2;
-
   --gainsboro: #e8e8e8;
   --alto: #d9d9d9;
   --white: #ffffff;
+  --emerald: #61cf7d;
 }
 
 .lightTheme,
@@ -33,4 +34,6 @@
   --border-primary: var(--columbia-blue);
   --border-secondary: var(--ethereal-white);
   --icon-primary: var(--alto);
+  --bg-red: var(--persimmon);
+  --bg-green: var(--emerald);
 }

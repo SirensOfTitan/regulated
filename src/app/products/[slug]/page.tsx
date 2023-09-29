@@ -1,5 +1,6 @@
 import ProductDetails from "app/components/product/ProductDetails";
 import * as airtable from "app/integrations/airtable";
+import { z } from "zod";
 import * as collections from "app/utils/collections";
 import * as wikipedia from "app/integrations/wikipedia";
 
@@ -22,6 +23,7 @@ interface Params {
   params: {
     slug: string;
   };
+  searchParams: unknown;
 }
 
 export async function generateMetadata({ params }: Params) {
@@ -37,7 +39,11 @@ export async function generateMetadata({ params }: Params) {
       };
 }
 
-export default async function Product({ params }: Params) {
+const searchParamsSchema = z.object({
+  action: z.optional(z.literal("feedback")),
+});
+
+export default async function Product({ params, searchParams }: Params) {
   const { slug } = params;
 
   const [product, allUsers, allAccreditations, allLinks, allStandards] =
@@ -61,8 +67,12 @@ export default async function Product({ params }: Params) {
           },
         });
 
+  const parsedParams = searchParamsSchema.safeParse(searchParams);
+  const action = parsedParams.success ? parsedParams.data.action : null;
+
   return product == null ? null : (
     <ProductDetails
+      action={action}
       product={product}
       summary={extract}
       allUsers={allUsers}

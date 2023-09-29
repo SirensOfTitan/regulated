@@ -13,3 +13,5 @@ export interface Product {
 }
 
 export type ElementOf<T extends readonly unknown[]> = T[number];
+
+export type PromiseOrValue<T> = T | Promise<T>;
