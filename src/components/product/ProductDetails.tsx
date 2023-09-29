@@ -85,13 +85,6 @@ export default function ProductDetails({
         <ActionAlert action={action} />
         <ProductHeader product={product} />
         <article className={styles.productDetails}>
-          {summary == null ? null : (
-            <section className={styles.summary}>
-              <Heading depth={2}>About</Heading>
-              {summary}
-            </section>
-          )}
-          <hr />
           <Heading depth={2}>Users</Heading>
           <table>
             <thead>
