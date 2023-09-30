@@ -118,7 +118,7 @@ export default function ProductListFilter({
         />
         <Dropdown
           className={styles.actionItem}
-          anchor={`👩‍⚖️ Accreditations ${
+          anchor={`📋 Accreditations ${
             filter.accreditations?.size ? `(${filter.accreditations.size})` : ""
           }`}
           popup={
