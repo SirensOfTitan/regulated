@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "precommit": "pnpm tsc && pnpm prettier src --write"
+    "precommit": "pnpm tsc && pnpm lint && pnpm prettier src --write"
   },
   "dependencies": {
     "@types/node": "20.6.2",
