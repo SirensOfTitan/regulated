@@ -1,5 +1,6 @@
 "use server";
 
+import * as airtable from "app/integrations/airtable";
 import { z } from "zod";
 import { Maybe } from "app/types";
 import { randomUUID } from "crypto";
@@ -35,6 +36,27 @@ export async function submitFeedback(
       errorMessage: "The data submitted was malformed, please try again.",
     };
   }
+
+  const product = await airtable.queries.recordFromSlug(
+    airtable.defaultClient,
+    {
+      slug: parsedData.data.productSlug,
+      tableName: "Products",
+    },
+  );
+
+  if (product == null) {
+    return {
+      ...baseError,
+      errorMessage:
+        "Could not find the product you're submitting feedback for.",
+    };
+  }
+
+  await airtable.mutations.addFeedback(airtable.defaultClient, {
+    productID: product.id,
+    feedback: parsedData.data.feedback,
+  });
 
   redirect(`/products/${parsedData.data.productSlug}?action=feedback`);
 }

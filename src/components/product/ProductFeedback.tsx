@@ -38,6 +38,7 @@ export default function ProductFeedback({ product }: Props) {
           <ProductHeader product={product} page="feedback" />
           <div className={styles.feedback}>
             <textarea
+              autoFocus
               name="feedback"
               minLength={3}
               required
