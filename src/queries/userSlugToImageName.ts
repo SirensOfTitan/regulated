@@ -66,6 +66,8 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "uk_nhs.svg";
     case "pwc":
       return "pricewaterhousecoopers.svg";
+    case "royal-bank-of-canada":
+      return "rbc_royal_bank.svg";
     case "small-business-administration":
       return "sba.svg";
     case "smithsonian-institution":
