@@ -78,7 +78,7 @@ function sortComparator(order: OrderBy, x: Product, y: Product): number {
 
 function sort(products: Product[], order: Maybe<PackedOrderOption>): Product[] {
   if (order == null) {
-    return products;
+    order = "productName-asc";
   }
 
   const [orderBy, direction] = unpackOption(order);
