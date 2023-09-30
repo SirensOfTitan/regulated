@@ -1,6 +1,7 @@
 .users {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 8px;
 }
 
 .user {
@@ -49,10 +50,6 @@
 
 .logo {
   position: relative !important;
-}
-
-.user + .user {
-  margin-top: 8px;
 }
 
 .info h4 {
