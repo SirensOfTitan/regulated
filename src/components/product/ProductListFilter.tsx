@@ -4,7 +4,7 @@ import Popup from "../general/Popup";
 import PopupRadioItem from "../general/PopupRadioItem";
 import styles from "./ProductListFilter.module.css";
 import * as collections from "app/utils/collections";
-import { Accreditation, User } from "app/schemas";
+import { Accreditation, Product, User } from "app/schemas";
 import { useEffect, useMemo, useState } from "react";
 import Container from "../general/Container";
 
@@ -28,6 +28,7 @@ function getOrderByLabel(option: search.OrderOption) {
 interface Props {
   filter: search.Filter;
   accreditations: Map<string, Accreditation>;
+  products: Map<string, Product>;
   users: Map<string, User>;
   onChange: (newFilter: search.Filter) => void;
 }
@@ -36,6 +37,7 @@ export default function ProductListFilter({
   filter,
   onChange,
   accreditations: accreditationsMap,
+  products: products,
   users: usersMap,
 }: Props) {
   const accreditations = useMemo(
@@ -62,6 +64,19 @@ export default function ProductListFilter({
 
   const [isClient, setIsClient] = useState(false);
   useEffect(() => setIsClient(true), []);
+
+  const allUseCases = new Set<string>;
+  useMemo(
+    () =>
+      products.forEach((product) => {
+        product.usecases.forEach((usecase) => {
+          allUseCases.add(usecase);
+        });
+      }),
+      [products],
+  );
+  var allUseCasesSorted = new Array<string>;
+  allUseCasesSorted = Array.from(allUseCases).sort();
 
   return (
     <article className={styles.filterRoot}>
@@ -173,6 +188,44 @@ export default function ProductListFilter({
                     name="users"
                     value={type}
                     checked={filter.users?.has(type) ?? false}
+                  />
+                );
+              })}
+            </Popup>
+          }
+        />
+        <Dropdown
+          className={styles.actionItem}
+          anchor={`🛠️ Use Cases ${
+            filter.usecases?.size ? `(${filter.usecases.size})` : ""
+          }`}
+          popup={
+            <Popup title="Use Cases">
+              {allUseCasesSorted.map((type) => {
+                return (
+                  <PopupRadioItem
+                    key={`${type}:${filter.usecases?.has(type)}`}
+                    type="checkbox"
+                    label={type}
+                    onChange={(ev) => {
+                      ev.preventDefault();
+
+                      const newUseCases = new Set(filter?.usecases ?? []);
+
+                      if (ev.target.checked) {
+                        newUseCases.add(type);
+                      } else {
+                        newUseCases.delete(type);
+                      }
+
+                      onChange({
+                        ...filter,
+                        usecases: newUseCases,
+                      });
+                    }}
+                    name="usecases"
+                    value={type}
+                    checked={filter.usecases?.has(type) ?? false}
                   />
                 );
               })}

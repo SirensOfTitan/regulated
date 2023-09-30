@@ -12,6 +12,7 @@ export const product = () =>
       Links: z.optional(z.array(z.string())),
       "Other Standards": z.optional(z.array(z.string())),
       "Used By": z.optional(z.array(z.string())),
+      "Use Cases": z.optional(z.array(z.string())),
       "Wikipedia Slug": z.optional(z.string()),
       Description: z.optional(z.string()),
     })
@@ -28,5 +29,6 @@ export const product = () =>
       links: obj["Links"] ?? [],
       standards: obj["Other Standards"] ?? [],
       users: obj["Used By"] ?? [],
+      usecases: obj["Use Cases"] ?? [],
       wikipediaSlug: obj["Wikipedia Slug"],
     }));

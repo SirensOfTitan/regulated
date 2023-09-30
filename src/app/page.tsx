@@ -10,14 +10,14 @@ interface Props {
 }
 
 export default async function Products({ searchParams }: Props) {
-  const [products, accsByID, usersByID] = await Promise.all([
-    airtable.cached.allProducts(),
+  const [accsByID, productsByID, usersByID] = await Promise.all([
     airtable.cached.allAccreditations(),
+    airtable.cached.allProducts(),
     airtable.cached.allUsers(),
   ]);
 
   const descriptions = await Promise.all(
-    products.map(async (product) => {
+    productsByID.map(async (product) => {
       if (
         product.description != null &&
         product.description.trim().length !== 0
@@ -50,7 +50,7 @@ export default async function Products({ searchParams }: Props) {
   return (
     <>
       <ProductList
-        products={products}
+        products={productsByID}
         accreditations={accsByID}
         users={usersByID}
         descriptions={descriptionsByID}

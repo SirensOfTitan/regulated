@@ -13,7 +13,7 @@ import Container from "../general/Container";
 import { useDebounce } from "use-debounce";
 
 interface Props {
-  products: Product[];
+  products: Map<string, Product>;
   accreditations: Map<string, Accreditation>;
   users: Map<string, User>;
   descriptions: Map<string, Maybe<string>>;
@@ -86,6 +86,7 @@ export default function ProductList({
           filter={filter}
           onChange={setFilter}
           accreditations={accreditations}
+          products={products}
           users={users}
         />
         <Container className={styles.list}>

@@ -28,6 +28,29 @@ function applyAccreditations(
   return product;
 }
 
+function applyUseCases(
+  product: Maybe<Product>,
+  usecases: Maybe<Set<string>>,
+): Maybe<Product> {
+  if (product == null) {
+    return null;
+  }
+
+  // If no use cases are selected, select them all.
+  if (usecases == null || usecases.size === 0) {
+    return product;
+  }
+
+  if (
+    collections.setIntersection(product.usecases, usecases).size <=
+    0
+  ) {
+    return null;
+  }
+
+  return product;
+}
+
 function applyUsers(
   product: Maybe<Product>,
   users: Maybe<Set<string>>,
@@ -94,16 +117,19 @@ interface ApplyFiltersOptions {
   query: string;
 }
 export function applyFilters(
-  products: Product[],
+  products: Map<string, Product>,
   { filter, query, usersMap }: ApplyFiltersOptions,
 ) {
   return sort(
     products
       .map((product) => {
         return applyUsers(
-          applyAccreditations(
-            applyQuery(product, query),
-            filter.accreditations,
+          applyUseCases(
+            applyAccreditations(
+              applyQuery(product, query),
+              filter.accreditations,
+            ),
+            filter.usecases,
           ),
           filter.users,
           usersMap,
