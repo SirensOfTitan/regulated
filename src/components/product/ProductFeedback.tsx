@@ -37,7 +37,12 @@ export default function ProductFeedback({ product }: Props) {
         <form action={formAction} className={styles.form}>
           <ProductHeader product={product} page="feedback" />
           <div className={styles.feedback}>
-            <textarea name="feedback" minLength={3} required disabled={pending} />
+            <textarea
+              name="feedback"
+              minLength={3}
+              required
+              disabled={pending}
+            />
           </div>
           <input type="hidden" name="productSlug" value={product.slug} />
         </form>

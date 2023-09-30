@@ -50,13 +50,19 @@ export default function ProductHeader({ product, page }: Props) {
           </a>
         )}
         <div className={styles.spacer} />
-        {page !== "product" ? null : <Link
-          className={styles.button}
-          href={`/products/${product.slug}/feedback`}
-        >
-          ✍️ Suggest changes
-        </Link>}
-        {page !== "feedback" ? null : <button disabled={pending} className={styles.button} type="submit">👏 Submit feedback</button>}
+        {page !== "product" ? null : (
+          <Link
+            className={styles.button}
+            href={`/products/${product.slug}/feedback`}
+          >
+            ✍️ Suggest changes
+          </Link>
+        )}
+        {page !== "feedback" ? null : (
+          <button disabled={pending} className={styles.button} type="submit">
+            👏 Submit feedback
+          </button>
+        )}
       </div>
       <div className={styles.actionsFill} />
     </section>
