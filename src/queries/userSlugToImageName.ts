@@ -4,6 +4,10 @@ export function userSlugToImageName(slug: string): Maybe<string> {
   switch (slug) {
     case "americorps":
       return "americorps.svg";
+    case "bain-company":
+      return "bain.svg";
+    case "carta":
+      return "carta.svg";
     case "consumer-financial-protection-bureau":
       return "cfpb.png";
     case "department-of-transportation":
@@ -14,6 +18,8 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "commerce.svg";
     case "department-of-defense":
       return "dod.svg";
+    case "department-of-education":
+      return "dept-of-edu.svg";
     case "department-of-energy":
       return "energy.svg";
     case "department-of-health-and-human-services":
@@ -32,6 +38,10 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "interior.svg";
     case "department-of-the-treasury":
       return "treasury.svg";
+    case "department-of-transportation":
+      return "dot.svg";
+    case "department-of-veterans-affairs":
+      return "va.svg";
     case "federal-communications-commission":
       return "fcc.svg";
     case "federal-reserve":
@@ -44,8 +54,16 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "canada.svg";
     case "government-of-the-united-kingdom":
       return "uk.svg";
+    case "intuit":
+      return "intuit.svg";
+    case "keybank":
+      return "keybank.svg";
+    case "nasdaq":
+      return "nasdaq.svg";
     case "national-aeronautics-and-space-administration":
       return "nasa.svg";
+    case "pwc":
+      return "pricewaterhousecoopers.svg";
     case "small-business-administration":
       return "sba.svg";
     case "smithsonian-institution":
@@ -54,8 +72,16 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "ssa.svg";
     case "state-of-iowa":
       return "iowa.svg";
+    case "state-of-missouri":
+      return "missouri.svg";
     case "state-of-new-jersey":
       return "nj.svg";
+    case "state-of-oklahoma":
+      return "oklahoma.svg";
+    case "state-of-vermont":
+      return "vermont.svg";
+    case "stripe":
+      return "stripe.svg";
     case "the-white-house":
       return "white_house.jpg";
     case "university-of-washington-school-of-medicine":
