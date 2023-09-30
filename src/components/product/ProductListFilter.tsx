@@ -188,36 +188,27 @@ export default function ProductListFilter({
         />
         <Dropdown
           className={styles.actionItem}
-          anchor={`🛠️ Use Cases ${
-            filter.usecases?.size ? `(${filter.usecases.size})` : ""
-          }`}
+          anchor={`🛠 ${filter.usecase == null ? "Use cases" : filter.usecase}`}
           popup={
             <Popup title="Use Cases">
               {allUseCases.map((type) => {
                 return (
                   <PopupRadioItem
-                    key={`${type}:${filter.usecases?.has(type)}`}
-                    type="checkbox"
+                    key={`${type}:${filter.usecase == type}`}
+                    type="radio"
                     label={type}
                     onChange={(ev) => {
                       ev.preventDefault();
-
-                      const newUseCases = new Set(filter?.usecases ?? []);
-
-                      if (ev.target.checked) {
-                        newUseCases.add(type);
-                      } else {
-                        newUseCases.delete(type);
-                      }
+                      const newValue = ev.target.checked ? type : null;
 
                       onChange({
                         ...filter,
-                        usecases: newUseCases,
+                        usecase: newValue,
                       });
                     }}
                     name="usecases"
                     value={type}
-                    checked={filter.usecases?.has(type) ?? false}
+                    checked={filter.usecase === type ?? false}
                   />
                 );
               })}
