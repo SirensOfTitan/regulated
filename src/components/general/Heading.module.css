@@ -1,6 +1,6 @@
 .heading {
   color: var(--brand);
-  font-weight: bold;
+  font-weight: 500;
   padding: 8px 0;
   margin: 0;
 }

@@ -12,6 +12,7 @@ import Tag from "app/components/general/Tag";
 import Container from "../general/Container";
 import Alert from "../general/Alert";
 import ProductHeader from "./ProductHeader";
+import ProductDetailsUsers from "./ProductDetailsUsers";
 
 type ActionKind = Maybe<"feedback">;
 interface ActionAlertProps {
@@ -86,22 +87,7 @@ export default function ProductDetails({
         <ProductHeader product={product} />
         <article className={styles.productDetails}>
           <Heading depth={2}>Users</Heading>
-          <table>
-            <thead>
-              <tr>
-                <td>Name</td>
-                <td>Type</td>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((u) => (
-                <tr key={u.id}>
-                  <td>{u.name}</td>
-                  <td>{u.type ?? "-"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <ProductDetailsUsers users={users} />
           <Heading depth={2}>Links</Heading>
           {links.map((l) => (
             <p key={l.id}>

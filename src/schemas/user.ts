@@ -9,6 +9,7 @@ export const user = () =>
       Products: z.optional(z.array(z.string())),
       Type: z.optional(z.string()),
       Slug: z.string(),
+      Website: z.string().url(),
     })
     .transform((obj) => ({
       id: obj["ID"],
@@ -17,4 +18,5 @@ export const user = () =>
       products: obj["Products"] ?? [],
       type: obj["Type"],
       slug: obj["Slug"],
+      website: obj["Website"],
     }));
