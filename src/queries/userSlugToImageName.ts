@@ -42,6 +42,8 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "dot.svg";
     case "department-of-veterans-affairs":
       return "va.svg";
+    case "environmental-protection-agency":
+      return "epa.svg";
     case "federal-communications-commission":
       return "fcc.svg";
     case "federal-reserve":
@@ -64,6 +66,8 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "nasa.svg";
     case "national-health-service-uk":
       return "uk_nhs.svg";
+    case "office-of-personnel-management":
+      return "opm.svg";
     case "pwc":
       return "pricewaterhousecoopers.svg";
     case "royal-bank-of-canada":
