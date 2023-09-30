@@ -84,7 +84,7 @@ export default function ProductDetails({
       <Header query="" onChangeQuery={() => null} product={product} />
       <Container>
         <ActionAlert action={action} />
-        <ProductHeader product={product} />
+        <ProductHeader product={product} page="product" />
         <article className={styles.productDetails}>
           <Heading depth={2}>Users</Heading>
           <ProductDetailsUsers users={users} />

@@ -7,6 +7,7 @@ import * as collections from "app/utils/collections";
 import { Accreditation, Product, User } from "app/schemas";
 import { useEffect, useMemo, useState } from "react";
 import Container from "app/components/general/Container";
+import { useClient } from "../hooks/useClient";
 
 function getOrderByLabel(option: search.OrderOption) {
   const [order, direction] = option;
@@ -62,8 +63,7 @@ export default function ProductListFilter({
     [packedOrder],
   );
 
-  const [isClient, setIsClient] = useState(false);
-  useEffect(() => setIsClient(true), []);
+  const isClient = useClient();
 
   const allUseCases = useMemo(
     () => [...new Set(products.flatMap((product) => product.usecases).sort())],

@@ -1,0 +1,39 @@
+.feedback {
+  background: var(--bg-page-primary);
+  border-radius: 8px;
+  box-shadow: var(--shadow-medium);
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 8px;
+}
+
+.feedback:focus-within {
+  box-shadow:
+    0 0 0 1px var(--brand),
+    0 0 0 4px var(--brand-faded);
+  transition: box-shadow 0.15s;
+}
+
+.feedback textarea {
+  flex: 1 1 auto;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px;
+  padding-bottom: 8px;
+  flex: 1 1 auto;
+}
