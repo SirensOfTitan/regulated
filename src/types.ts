@@ -4,14 +4,6 @@ export type ReturnType<T> = T extends (...args: unknown[]) => infer R
   ? R
   : never;
 
-/** These probably shouldn't live here, app-specific types */
-export interface Product {
-  id: string;
-  name: string;
-  url: Maybe<string>;
-  slug: string;
-}
-
 export type ElementOf<T extends readonly unknown[]> = T[number];
 
 export type PromiseOrValue<T> = T | Promise<T>;

@@ -1,12 +1,12 @@
 import * as search from "app/search";
-import Dropdown from "../general/Dropdown";
-import Popup from "../general/Popup";
-import PopupRadioItem from "../general/PopupRadioItem";
+import Dropdown from "app/components/general/Dropdown";
+import Popup from "app/components/general/Popup";
+import PopupRadioItem from "app/components/general/PopupRadioItem";
 import styles from "./ProductListFilter.module.css";
 import * as collections from "app/utils/collections";
 import { Accreditation, Product, User } from "app/schemas";
 import { useEffect, useMemo, useState } from "react";
-import Container from "../general/Container";
+import Container from "app/components/general/Container";
 
 function getOrderByLabel(option: search.OrderOption) {
   const [order, direction] = option;
@@ -28,7 +28,7 @@ function getOrderByLabel(option: search.OrderOption) {
 interface Props {
   filter: search.Filter;
   accreditations: Map<string, Accreditation>;
-  products: Map<string, Product>;
+  products: Product[];
   users: Map<string, User>;
   onChange: (newFilter: search.Filter) => void;
 }
@@ -65,18 +65,10 @@ export default function ProductListFilter({
   const [isClient, setIsClient] = useState(false);
   useEffect(() => setIsClient(true), []);
 
-  const allUseCases = new Set<string>;
-  useMemo(
-    () =>
-      products.forEach((product) => {
-        product.usecases.forEach((usecase) => {
-          allUseCases.add(usecase);
-        });
-      }),
-      [products],
+  const allUseCases = useMemo(
+    () => [...new Set(products.flatMap((product) => product.usecases).sort())],
+    [products],
   );
-  var allUseCasesSorted = new Array<string>;
-  allUseCasesSorted = Array.from(allUseCases).sort();
 
   return (
     <article className={styles.filterRoot}>
@@ -201,7 +193,7 @@ export default function ProductListFilter({
           }`}
           popup={
             <Popup title="Use Cases">
-              {allUseCasesSorted.map((type) => {
+              {allUseCases.map((type) => {
                 return (
                   <PopupRadioItem
                     key={`${type}:${filter.usecases?.has(type)}`}

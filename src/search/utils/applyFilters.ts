@@ -19,8 +19,8 @@ function applyAccreditations(
   }
 
   if (
-    collections.setIntersection(product.accreditations, accreditations).size <=
-    0
+    collections.setIntersection(product.accreditations, accreditations).size !==
+    accreditations.size
   ) {
     return null;
   }
@@ -42,8 +42,8 @@ function applyUseCases(
   }
 
   if (
-    collections.setIntersection(product.usecases, usecases).size <=
-    0
+    collections.setIntersection(product.usecases, usecases).size !==
+    usecases.size
   ) {
     return null;
   }
@@ -66,7 +66,7 @@ function applyUsers(
   }
 
   const userTypes = product.users.map((u) => usersMap.get(u)?.type);
-  if (collections.setIntersection(userTypes, users).size <= 0) {
+  if (collections.setIntersection(userTypes, users).size !== users.size) {
     return null;
   }
 
@@ -117,7 +117,7 @@ interface ApplyFiltersOptions {
   query: string;
 }
 export function applyFilters(
-  products: Map<string, Product>,
+  products: Product[],
   { filter, query, usersMap }: ApplyFiltersOptions,
 ) {
   return sort(

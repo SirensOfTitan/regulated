@@ -13,7 +13,7 @@ import Container from "../general/Container";
 import { useDebounce } from "use-debounce";
 
 interface Props {
-  products: Map<string, Product>;
+  products: Product[];
   accreditations: Map<string, Accreditation>;
   users: Map<string, User>;
   descriptions: Map<string, Maybe<string>>;
