@@ -9,8 +9,54 @@ import Link from "next/link";
 
 function slugToImageName(slug: string): Maybe<string> {
   switch (slug) {
+    case "adobe-creative-cloud":
+      return "adobe-creative-cloud.svg";
+    case "akamai":
+      return "akamai.svg";
+    case "amazon-web-services":
+      return "aws.svg";
+    case "american-heart-association-precision-medicine-platform":
+      return "american-heart-association.svg";
+    case "appian":
+      return "appian.svg";
     case "arcgis":
       return "arcgis.png";
+    case "asana":
+      return "asana.svg";
+    case "ask-sage":
+      return "asksage.png";
+    case "betterup":
+      return "betterup.jpg";
+    case "box":
+      return "box.svg";
+    case "community":
+      return "community.jpg";
+    case "docusign":
+      return "docusign.svg";
+    case "figma":
+      return "figma.svg";
+    case "lucid":
+      return "lucid.svg";
+    case "palantir":
+      return "palantir.svg";
+    case "salesforce":
+      return "salesforce.svg";
+    case "servicenow":
+      return "servicenow.svg";
+    case "slack":
+      return "slack.svg";
+    case "snowflake":
+      return "snowflake.svg";
+    case "surveymonkey":
+      return "surveymonkey.svg";
+    case "trello":
+      return "trello.svg";
+    case "wordpress":
+      return "wordpress.svg";
+    case "workday":
+      return "workday.svg";
+    case "zendesk":
+      return "zendesk.svg";
     default:
       return null;
   }

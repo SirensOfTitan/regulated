@@ -94,8 +94,12 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "nj.svg";
     case "state-of-oklahoma":
       return "oklahoma.svg";
+    case "state-of-tennessee":
+      return "tennessee.svg";
     case "state-of-vermont":
       return "vermont.svg";
+    case "state-of-washington":
+      return "washington-state.svg";
     case "stripe":
       return "stripe.svg";
     case "the-white-house":
