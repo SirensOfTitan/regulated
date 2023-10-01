@@ -98,6 +98,8 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "stripe.svg";
     case "the-white-house":
       return "whitehouse.svg";
+    case "united-states-agency-for-international-development":
+      return "usaid.svg";
     case "united-states-house-of-representatives":
       return "congress-house.svg";
     case "united-states-senate":
