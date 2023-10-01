@@ -18,6 +18,7 @@
 .query {
   flex: 1 1 auto;
   outline: 0;
+  min-width: 0;
   background: var(--bg-page-alt);
   border-radius: 4px;
   align-items: center;
@@ -60,15 +61,20 @@
 }
 
 .productToken {
-  border: 1px solid var(--border-primary);
-  background: var(--bg-page-alt);
+  box-shadow:
+    0 0 0 1px var(--brand),
+    0 0 0 4px var(--brand-faded);
+  background: var(--brand);
+  color: var(--white);
+  flex: 0 0 auto;
   position: relative;
   align-self: center;
+
   font-weight: 500;
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
-  margin-right: 4px;
+  margin: 0 8px;
   overflow: hidden;
 }
 
@@ -82,9 +88,10 @@
   text-decoration: none;
   padding: 4px 8px;
   font-size: 14px;
-  border-left: 1px solid var(--border-primary);
+  border-left: 1px solid var(--brand-faded);
+  color: var(--white);
 }
 
 .productToken .clear:hover {
-  background: var(--bg-row);
+  background: var(--brand-faded);
 }
