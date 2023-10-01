@@ -58,6 +58,8 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "uk.svg";
     case "intuit":
       return "intuit.svg";
+    case "kaiser-permanente":
+      return "kaiser.svg";
     case "keybank":
       return "keybank.svg";
     case "nasdaq":
