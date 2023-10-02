@@ -29,7 +29,10 @@ export class LocalCacheAdapter implements types.CacheAdapter {
     }
 
     const hits = new Map(grouped.get("hit") ?? []);
-    return keys.map((k) => hits.get(k)?.value);
+    return keys.map((k) => {
+      const hit = hits.get(k)?.value;
+      return hit != null ? JSON.parse(hit) : null;
+    });
   }
 
   async storeMany(toSet: Map<string, string>, expiresAfterImpl?: number) {
