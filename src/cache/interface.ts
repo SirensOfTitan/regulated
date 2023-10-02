@@ -3,7 +3,7 @@ import stableStringify from "json-stable-stringify";
 
 import type { Maybe } from "app/types";
 import * as collections from "app/utils/collections";
-import { CompoundCacheAdapter } from "./adapter/CompoundCacheAdapter";
+import { LocalCacheAdapter } from "./adapter/LocalCacheAdapter";
 
 type ICacheTypeExpiration =
   | { type: "timeInSeconds"; value: number }
@@ -55,7 +55,7 @@ type CacheConfigInput<TKey, TResult> = {
   keyPrefix: string;
 } & SourceType<TKey, TResult>;
 
-const cacheAdapter = new CompoundCacheAdapter();
+const cacheAdapter = new LocalCacheAdapter();
 export const CacheType = <TKey extends Stringable, TResult>(
   input: CacheConfigInput<TKey, TResult>,
 ): CacheTypeShape<TKey, TResult> => {
