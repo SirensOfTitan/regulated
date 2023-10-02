@@ -85,13 +85,15 @@ export const CacheType = <TKey extends Stringable, TResult>(
       const cacheValues = await cacheAdapter.getMany(...mappedKeys);
       const cacheResults = collections
         .zip(keys as TKey[], cacheValues)
-        .map(
-          ([key, value]) =>
-            [
-              key,
-              value != null ? (JSON.parse(value) as TResult) : null,
-            ] as const,
-        );
+        .map(([key, value]) => {
+          if (value != null) {
+            console.log(value);
+          }
+          return [
+            key,
+            value != null ? (JSON.parse(value) as TResult) : null,
+          ] as const;
+        });
 
       switch (input.type) {
         case "noSource":
