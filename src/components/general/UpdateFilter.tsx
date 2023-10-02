@@ -49,6 +49,12 @@ export function UpdateFilter({ filter, query }: Props) {
       }
     }
 
+    if (filter.usecase == null) {
+      newParams.delete("usecase");
+    } else {
+      newParams.set("usecase", filter.usecase);
+    }
+
     router.push(`${pathname}?${newParams.toString()}`);
   }, [filter, pathname, router, query, params]);
 

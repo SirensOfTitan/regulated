@@ -24,4 +24,5 @@ export const searchParams = () =>
         .union([z.string().transform((s) => [s]), z.array(z.string())])
         .transform((z) => new Set(z)),
     ),
+    usecase: z.optional(z.string()),
   });
