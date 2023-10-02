@@ -32,9 +32,6 @@ dependencies:
   json-stable-stringify:
     specifier: ^1.0.2
     version: 1.0.2
-  lru-cache:
-    specifier: ^10.0.1
-    version: 10.0.1
   modern-normalize:
     specifier: ^2.0.0
     version: 2.0.0
@@ -1656,11 +1653,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
-
-  /lru-cache@10.0.1:
-    resolution: {integrity: sha512-IJ4uwUTi2qCccrioU6g9g/5rvvVl13bsdczUUcqbciD9iLr095yj8DQKdObriEvuNSx325N1rV1O0sJFszx75g==}
-    engines: {node: 14 || >=16.14}
     dev: false
 
   /lru-cache@6.0.0:
