@@ -7,25 +7,18 @@ import { Maybe } from "app/types";
 import styles from "./ProductDetails.module.css";
 import Heading from "../general/Heading";
 import { useMemo } from "react";
-import TagGroup from "app/components/general/TagGroup";
 import Tag from "app/components/general/Tag";
 import Container from "../general/Container";
 import Alert from "../general/Alert";
 import ProductHeader from "./ProductHeader";
 import ProductDetailsUsers from "./ProductDetailsUsers";
+import ProductDetailsAccreditations from "./ProductDetailsAccreditations";
 
 interface LinksProps {
-  allLinks: Map<string, Link>;
-  product: Product;
+  links: Link[];
 }
 
-function Links({ allLinks, product }: LinksProps) {
-  const links = useMemo(
-    () =>
-      product.links.map((p) => allLinks.get(p)).filter(collections.isNotNull),
-    [allLinks, product],
-  );
-
+function Links({ links }: LinksProps) {
   return links.length === 0 ? null : (
     <>
       <Heading depth={2}>Links</Heading>
@@ -39,51 +32,16 @@ function Links({ allLinks, product }: LinksProps) {
 }
 
 interface StandardsProps {
-  allStandards: Map<string, Standard>;
-  product: Product;
+  standards: Standard[];
 }
 
-function Standards({ allStandards, product }: StandardsProps) {
-  const standards = useMemo(
-    () =>
-      product.standards
-        .map((p) => allStandards.get(p))
-        .filter(collections.isNotNull),
-    [allStandards, product],
-  );
-
+function Standards({ standards }: StandardsProps) {
   return standards.length === 0 ? null : (
     <>
       <Heading depth={2}>Standards</Heading>
       {standards.map((s) => (
         <Tag background="primary" key={s.id}>
           {s.name}
-        </Tag>
-      ))}
-    </>
-  );
-}
-
-interface AccreditationsProps {
-  allAccreditations: Map<string, Accreditation>;
-  product: Product;
-}
-
-function Accreditations({ allAccreditations, product }: AccreditationsProps) {
-  const accreditations = useMemo(
-    () =>
-      product.accreditations
-        .map((p) => allAccreditations.get(p))
-        .filter(collections.isNotNull),
-    [allAccreditations, product],
-  );
-
-  return accreditations.length === 0 ? null : (
-    <>
-      <Heading depth={2}>Accreditations</Heading>
-      {accreditations.map((a) => (
-        <Tag background="primary" key={a.id}>
-          {a.type}
         </Tag>
       ))}
     </>
@@ -162,14 +120,10 @@ export default function ProductDetails({
         <ActionAlert action={action} />
         <ProductHeader product={product} page="product" />
         <article className={styles.productDetails}>
-          <Heading depth={2}>Users</Heading>
           <ProductDetailsUsers users={users} />
-          <Links product={product} allLinks={allLinks} />
-          <Accreditations
-            product={product}
-            allAccreditations={allAccreditations}
-          />
-          <Standards allStandards={allStandards} product={product} />
+          <ProductDetailsAccreditations accreditations={accreditations} />
+          <Standards standards={standards} />
+          <Links links={links} />
         </article>
       </Container>
     </>
