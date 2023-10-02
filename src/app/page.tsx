@@ -2,6 +2,11 @@ import * as airtable from "app/integrations/airtable";
 import ProductList from "app/components/product/ProductList";
 import * as schemas from "app/schemas";
 import * as wikipedia from "app/integrations/wikipedia";
+import {
+  AllAccreditationsCacheType,
+  AllProductsCacheType,
+  AllUsersCacheType,
+} from "app/cache/types";
 
 export const revalidate = 3600;
 
@@ -10,11 +15,14 @@ interface Props {
 }
 
 export default async function Products({ searchParams }: Props) {
-  const [accsByID, products, usersByID] = await Promise.all([
-    airtable.cached.allAccreditations(),
-    airtable.cached.allProducts(),
-    airtable.cached.allUsers(),
+  const [accs, products, users] = await Promise.all([
+    AllAccreditationsCacheType.fetch("ALL_ACCREDITATIONS"),
+    AllProductsCacheType.fetch("ALL_PRODUCTS").then((p) => p ?? []),
+    AllUsersCacheType.fetch("ALL_USERS"),
   ]);
+
+  const accsByID = new Map((accs ?? []).map((a) => [a.id, a]));
+  const usersByID = new Map((users ?? []).map((u) => [u.id, u]));
 
   const descriptions = await Promise.all(
     products.map(async (product) => {

@@ -13,9 +13,12 @@
     "@types/node": "20.6.2",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "@vercel/kv": "^0.2.3",
     "airtable": "^0.12.2",
+    "dataloader": "^2.2.2",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
+    "json-stable-stringify": "^1.0.2",
     "modern-normalize": "^2.0.0",
     "next": "13.5.3",
     "react": "18.2.0",
@@ -26,6 +29,7 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "@types/json-stable-stringify": "^1.0.34",
     "encoding": "^0.1.13",
     "prettier": "^3.0.3"
   }

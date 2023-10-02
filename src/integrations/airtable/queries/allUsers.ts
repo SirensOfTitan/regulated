@@ -3,10 +3,8 @@ import { allRecordsForBase } from "./allRecordsForBase";
 import * as schemas from "app/schemas";
 
 export async function allUsers(client: AirtableBase) {
-  const result = await allRecordsForBase(client, {
+  return await allRecordsForBase(client, {
     baseName: "Users",
     schema: schemas.user(),
   });
-
-  return new Map(result.map((user) => [user.id, user]));
 }
