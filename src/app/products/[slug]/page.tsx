@@ -3,6 +3,13 @@ import * as airtable from "app/integrations/airtable";
 import { z } from "zod";
 import * as collections from "app/utils/collections";
 import * as wikipedia from "app/integrations/wikipedia";
+import {
+  AllAccreditationsCacheType,
+  AllLinksCacheType,
+  AllProductsCacheType,
+  AllStandardsCacheType,
+  AllUsersCacheType,
+} from "app/cache/types";
 
 // Ensures that we properly show a 404 when hitting a route not included
 // in the set defined by generateStaticParams.
@@ -52,10 +59,18 @@ export default async function Product({ params, searchParams }: Params) {
         slug,
         tableName: "Products",
       }),
-      airtable.cached.allUsers(),
-      airtable.cached.allAccreditations(),
-      airtable.cached.allLinks(),
-      airtable.cached.allStandards(),
+      AllUsersCacheType.fetch("ALL_USERS").then(
+        (as) => new Map((as ?? []).map((a) => [a.id, a])),
+      ),
+      AllAccreditationsCacheType.fetch("ALL_ACCREDITATIONS").then(
+        (as) => new Map((as ?? []).map((a) => [a.id, a])),
+      ),
+      AllLinksCacheType.fetch("ALL_LINKS").then(
+        (as) => new Map((as ?? []).map((a) => [a.id, a])),
+      ),
+      AllStandardsCacheType.fetch("ALL_STANDARDS").then(
+        (as) => new Map((as ?? []).map((a) => [a.id, a])),
+      ),
     ]);
 
   const extract =
