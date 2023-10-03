@@ -29,6 +29,8 @@ function slugToImageName(slug: string): Maybe<string> {
       return "betterup.jpg";
     case "box":
       return "box.svg";
+    case "cisco-webex":
+      return "cisco-webex.svg";
     case "community":
       return "community.jpg";
     case "docusign":
