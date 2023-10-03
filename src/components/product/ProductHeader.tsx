@@ -39,6 +39,8 @@ function slugToImageName(slug: string): Maybe<string> {
       return "lucid.svg";
     case "palantir":
       return "palantir.svg";
+    case "recorded-future":
+      return "recorded-future.png";
     case "salesforce":
       return "salesforce.svg";
     case "servicenow":
@@ -51,6 +53,8 @@ function slugToImageName(slug: string): Maybe<string> {
       return "surveymonkey.svg";
     case "trello":
       return "trello.svg";
+    case "twilio":
+      return "twilio.svg";
     case "wordpress":
       return "wordpress.svg";
     case "workday":

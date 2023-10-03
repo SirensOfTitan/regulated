@@ -79,7 +79,8 @@ export default function ProductList({
             <a href="https://www.gsa.gov/buy-through-us/purchasing-programs/gsa-multiple-award-schedule">
               GSA Multiple Award Schedules
             </a>
-            , and vendor websites.
+            , and vendor websites. Feedback or questions, drop us a note at{" "}
+            <a href="mailto:hello@regulated.app">hello@regulated.app</a>.
           </p>
         </Container>
         <ProductListFilter
