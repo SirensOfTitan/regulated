@@ -40,9 +40,18 @@ function Standards({ standards }: StandardsProps) {
     <>
       <Heading depth={2}>Standards</Heading>
       {standards.map((s) => (
-        <Tag background="primary" key={s.id}>
-          {s.name}
-        </Tag>
+        <div className={styles.standard} key={s.id}>
+          <a
+            href={s.website ?? "#"}
+            className={styles.anchor}
+            aria-label={`Link to ${s.name}'s website.`}
+          />
+          <div className={styles.inner}>
+            <h4>{s.name}</h4>
+            <p>{s.description ?? "-"}</p>
+          </div>
+          <div className={styles.linkIcon} />
+        </div>
       ))}
     </>
   );
