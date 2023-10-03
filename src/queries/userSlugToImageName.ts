@@ -88,6 +88,10 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "smithsonian.svg";
     case "social-security-administration":
       return "ssa.svg";
+    case "state-of-california":
+      return "state-of-california.svg";
+    case "state-of-colorado":
+      return "state-of-colorado.svg";
     case "state-of-iowa":
       return "iowa.svg";
     case "state-of-missouri":
@@ -106,6 +110,8 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "stripe.svg";
     case "the-white-house":
       return "whitehouse.svg";
+    case "united-healthcare":
+      return "united-healthcare.svg";
     case "united-states-agency-for-international-development":
       return "usaid.svg";
     case "united-states-house-of-representatives":
