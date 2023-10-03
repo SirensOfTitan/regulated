@@ -1,4 +1,3 @@
-import * as airtable from "app/integrations/airtable";
 import ProductList from "app/components/product/ProductList";
 import * as schemas from "app/schemas";
 import * as wikipedia from "app/integrations/wikipedia";
@@ -7,6 +6,7 @@ import {
   AllProductsCacheType,
   AllUsersCacheType,
 } from "app/cache/types";
+import { Metadata } from "next";
 
 export const revalidate = 3600;
 

@@ -1,11 +1,13 @@
 import "./globals.css";
 import "./constants.css";
-import type { Metadata } from "next";
 import Script from "next/script";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "regulated.app",
-  description: "Shows a series of products that have regulatory approval.",
+  title:
+    "regulated.app | Your guide to regulated tech products and accreditations",
+  description:
+    "regulated.app provides the latest information on products used in regulated industry like banking, government, and healthcare.",
 };
 
 export default function RootLayout({
