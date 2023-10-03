@@ -56,6 +56,7 @@ export default function Header({
             type="text"
             ref={inputRef}
             value={query}
+            aria-label="Search box for narrowing down products by title."
             onKeyDown={(ev) => {
               if (ev.key !== "Backspace") {
                 return;
