@@ -130,9 +130,9 @@ export default function ProductDetails({
         <ProductHeader product={product} page="product" />
         <article className={styles.productDetails}>
           <ProductDetailsUsers users={users} />
+          <Links links={links} />
           <ProductDetailsAccreditations accreditations={accreditations} />
           <Standards standards={standards} />
-          <Links links={links} />
         </article>
       </Container>
     </>
