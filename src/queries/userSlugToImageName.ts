@@ -56,6 +56,8 @@ export function userSlugToImageName(slug: string): Maybe<string> {
       return "canada.svg";
     case "government-of-chile":
       return "chile.svg";
+    case "government-of-india":
+      return "government-of-india.svg";
     case "government-of-the-united-kingdom":
       return "uk.svg";
     case "harvard-medical-school":
