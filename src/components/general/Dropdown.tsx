@@ -15,7 +15,11 @@ export default function Dropdown({ className, anchor: action, popup }: Props) {
   return (
     <div className={styles.dropdownContainer}>
       <div
-        className={browser.classnames(styles.dropdownRoot, className)}
+        className={browser.classnames(
+          styles.dropdownRoot,
+          className,
+          "anyDropdownRoot",
+        )}
         tabIndex={0}
       >
         <a className={browser.classnames(styles.action, "anyAction")}>

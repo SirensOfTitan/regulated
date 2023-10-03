@@ -70,4 +70,17 @@
   .spacer {
     display: none;
   }
+
+  /**
+   * Has only has ~87% of browser support, but since this is a
+   * mobile-only change, we should be safer to use it.
+   *
+   * This is here because when using backdrop-filter in a parent,
+   * all fixed position children are positioned relative to this container,
+   * not to the viewport.  As such, we need to remove this blur when the dialog
+   * is open to ensure it takes up the full viewport.
+   */
+  .filterRoot:has(:global(.anyDropdownRoot):focus-within) {
+    backdrop-filter: none;
+  }
 }

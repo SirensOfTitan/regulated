@@ -11,9 +11,6 @@ export default function Popup({ title, children }: Props) {
       <div className={styles.title}>
         {title}
         <span className={styles.spacer} />
-        <button type="button" className={styles.close}>
-          x
-        </button>
       </div>
       {children}
     </div>
