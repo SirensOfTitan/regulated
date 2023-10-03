@@ -1,4 +1,8 @@
 :root {
+  --z-top: 10000;
+  --z-middle: 1000;
+  --z-bottom: 100;
+
   --fonts: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
     "Helvetica Neue", helvetica, arial, sans-serif;
   --palatinate-blue: #4b3ee0;

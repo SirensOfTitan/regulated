@@ -17,7 +17,7 @@
   top: calc(100% + 2px);
   visibility: hidden;
   opacity: 0;
-  z-index: 100000;
+  z-index: var(--z-top);
   display: flex;
 }
 
@@ -30,7 +30,7 @@
 .dropdownContainer .closeMask {
   opacity: 0;
   cursor: pointer;
-  z-index: 10;
+  z-index: var(--z-middle);
   display: none;
 }
 
@@ -46,8 +46,8 @@
   left: 0;
   position: fixed;
   background: rgba(0, 0, 0, 0.75);
-  z-index: 99999;
-  pointer-events: none;
+  z-index: var(--z-bottom);
+  pointer-events: auto;
 }
 
 @media (min-width: 767px) {
@@ -63,6 +63,14 @@
 @media (max-width: 767px) {
   .dropdownRoot:focus-within .overlay {
     display: block;
+  }
+
+  .closeMask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 
   .popup {
