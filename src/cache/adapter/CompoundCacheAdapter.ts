@@ -16,7 +16,7 @@ export class CompoundCacheAdapter implements types.CacheAdapter {
         : new LocalCacheAdapter();
   }
 
-  async getMany(...keys: string[]): Promise<Maybe<string>[]> {
+  async getMany(...keys: string[]): Promise<Maybe<unknown>[]> {
     return this.adapter.getMany(...keys);
   }
 

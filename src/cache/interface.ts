@@ -69,9 +69,7 @@ export const CacheType = <TKey extends Stringable, TResult>(
       new Map(
         Array.from(idsWithValues.entries())
           .filter(([, value]) => value != null)
-          .map(
-            ([key, value]) => [cacheKey(key), JSON.stringify(value)] as const,
-          ),
+          .map(([key, value]) => [cacheKey(key), value] as const),
       ),
       input.expiration.type === "timeInSeconds"
         ? input.expiration.value

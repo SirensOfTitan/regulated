@@ -4,10 +4,10 @@ import * as collections from "app/utils/collections";
 import { kv } from "@vercel/kv";
 
 export class VercelCacheAdapter implements types.CacheAdapter {
-  async getMany(...keys: string[]): Promise<Maybe<string>[]> {
+  async getMany(...keys: string[]): Promise<Maybe<unknown>[]> {
     const hits = await Promise.all(
       keys.map(async (key) => {
-        const value = await kv.get<string>(key);
+        const value = await kv.get<unknown>(key);
         if (value == null) {
           return null;
         }

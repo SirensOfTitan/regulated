@@ -4,7 +4,7 @@ import * as collections from "app/utils/collections";
 
 interface Value {
   expiration: number;
-  value: string;
+  value: unknown;
 }
 
 export class LocalCacheAdapter implements types.CacheAdapter {
@@ -13,7 +13,7 @@ export class LocalCacheAdapter implements types.CacheAdapter {
     this.#map = new Map();
   }
 
-  async getMany(...keys: string[]): Promise<Maybe<string>[]> {
+  async getMany(...keys: string[]): Promise<Maybe<unknown>[]> {
     const now = new Date().getTime() / 1000;
     const grouped = collections.groupBy(
       keys
@@ -31,11 +31,11 @@ export class LocalCacheAdapter implements types.CacheAdapter {
     const hits = new Map(grouped.get("hit") ?? []);
     return keys.map((k) => {
       const hit = hits.get(k)?.value;
-      return hit != null ? JSON.parse(hit) : null;
+      return hit != null ? hit : null;
     });
   }
 
-  async storeMany(toSet: Map<string, string>, expiresAfterImpl?: number) {
+  async storeMany(toSet: Map<string, unknown>, expiresAfterImpl?: number) {
     const now = new Date().getTime() / 1000;
     const expiration = expiresAfterImpl
       ? now + expiresAfterImpl
