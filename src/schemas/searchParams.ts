@@ -19,6 +19,11 @@ export const searchParams = () =>
         .union([z.string().transform((s) => [s]), z.array(z.string())])
         .transform((z) => new Set(z)),
     ),
+    standards: z.optional(
+      z
+        .union([z.string().transform((s) => [s]), z.array(z.string())])
+        .transform((z) => new Set(z)),
+    ),
     users: z.optional(
       z
         .union([z.string().transform((s) => [s]), z.array(z.string())])

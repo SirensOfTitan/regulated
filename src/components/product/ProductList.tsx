@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import ProductListItem from "./ProductListItem";
 import styles from "./ProductList.module.css";
-import { Accreditation, Product, User } from "app/schemas";
+import { Accreditation, Product, Standard, User } from "app/schemas";
 import { UpdateFilter } from "app/components/general/UpdateFilter";
 import ProductListFilter from "./ProductListFilter";
 import * as search from "app/search";
@@ -15,6 +15,7 @@ import { useDebounce } from "use-debounce";
 interface Props {
   products: Product[];
   accreditations: Map<string, Accreditation>;
+  standards: Map<string, Standard>;
   users: Map<string, User>;
   descriptions: Map<string, Maybe<string>>;
   initialQuery: string;
@@ -26,6 +27,7 @@ export default function ProductList({
   products,
   accreditations,
   descriptions,
+  standards,
   users,
   initialFilter,
   initialQuery,
@@ -88,6 +90,7 @@ export default function ProductList({
           onChange={setFilter}
           accreditations={accreditations}
           products={products}
+          standards={standards}
           users={users}
         />
         <Container className={styles.list}>

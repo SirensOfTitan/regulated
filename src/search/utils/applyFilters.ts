@@ -28,6 +28,29 @@ function applyAccreditations(
   return product;
 }
 
+function applyStandards(
+  product: Maybe<Product>,
+  standards: Maybe<Set<string>>,
+): Maybe<Product> {
+  if (product == null) {
+    return null;
+  }
+
+  // If no standards are selected, select them all.
+  if (standards == null || standards.size === 0) {
+    return product;
+  }
+
+  if (
+    collections.setIntersection(product.standards, standards).size !==
+    standards.size
+  ) {
+    return null;
+  }
+
+  return product;
+}
+
 function applyUseCase(
   product: Maybe<Product>,
   usecase: Maybe<string>,
@@ -117,9 +140,12 @@ export function applyFilters(
       .map((product) => {
         return applyUsers(
           applyUseCase(
-            applyAccreditations(
-              applyQuery(product, query),
-              filter.accreditations,
+            applyStandards(
+              applyAccreditations(
+                applyQuery(product, query),
+                filter.accreditations,
+              ),
+              filter.standards,
             ),
             filter.usecase,
           ),

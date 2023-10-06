@@ -4,6 +4,7 @@ import * as wikipedia from "app/integrations/wikipedia";
 import {
   AllAccreditationsCacheType,
   AllProductsCacheType,
+  AllStandardsCacheType,
   AllUsersCacheType,
 } from "app/cache/types";
 import { Metadata } from "next";
@@ -15,13 +16,15 @@ interface Props {
 }
 
 export default async function Products({ searchParams }: Props) {
-  const [accs, products, users] = await Promise.all([
+  const [accs, products, stds, users] = await Promise.all([
     AllAccreditationsCacheType.fetch("ALL_ACCREDITATIONS"),
     AllProductsCacheType.fetch("ALL_PRODUCTS").then((p) => p ?? []),
+    AllStandardsCacheType.fetch("ALL_STANDARDS"),
     AllUsersCacheType.fetch("ALL_USERS"),
   ]);
 
   const accsByID = new Map((accs ?? []).map((a) => [a.id, a]));
+  const stdsByID = new Map((stds ?? []).map((s) => [s.id, s]));
   const usersByID = new Map((users ?? []).map((u) => [u.id, u]));
 
   const descriptions = await Promise.all(
@@ -60,6 +63,7 @@ export default async function Products({ searchParams }: Props) {
       <ProductList
         products={products}
         accreditations={accsByID}
+        standards={stdsByID}
         users={usersByID}
         descriptions={descriptionsByID}
         initialFilter={parsedParams}

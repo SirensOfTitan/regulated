@@ -4,7 +4,7 @@ import Popup from "app/components/general/Popup";
 import PopupRadioItem from "app/components/general/PopupRadioItem";
 import styles from "./ProductListFilter.module.css";
 import * as collections from "app/utils/collections";
-import { Accreditation, Product, User } from "app/schemas";
+import { Accreditation, Product, Standard, User } from "app/schemas";
 import { useEffect, useMemo, useState } from "react";
 import Container from "app/components/general/Container";
 import { useClient } from "../hooks/useClient";
@@ -30,6 +30,7 @@ interface Props {
   filter: search.Filter;
   accreditations: Map<string, Accreditation>;
   products: Product[];
+  standards: Map<string, Standard>;
   users: Map<string, User>;
   onChange: (newFilter: search.Filter) => void;
 }
@@ -39,6 +40,7 @@ export default function ProductListFilter({
   onChange,
   accreditations: accreditationsMap,
   products: products,
+  standards: standardsMap,
   users: usersMap,
 }: Props) {
   const accreditations = useMemo(
@@ -47,6 +49,14 @@ export default function ProductListFilter({
         (v) => v.includeInFilter,
       ),
     [accreditationsMap],
+  );
+
+  const standards = useMemo(
+    () =>
+      Array.from(standardsMap, ([, value]) => value).filter(
+        (v) => v.includeInFilter,
+      ),
+    [standardsMap],
   );
 
   const users = useMemo(
@@ -110,7 +120,7 @@ export default function ProductListFilter({
         />
         <Dropdown
           className={styles.actionItem}
-          anchor={`📋 Accreditations ${
+          anchor={`🧐 Accreditations ${
             filter.accreditations?.size ? `(${filter.accreditations.size})` : ""
           }`}
           popup={
@@ -142,6 +152,44 @@ export default function ProductListFilter({
                     name="accreditations"
                     value={acc.id}
                     checked={filter.accreditations?.has(acc.id) ?? false}
+                  />
+                );
+              })}
+            </Popup>
+          }
+        />
+        <Dropdown
+          className={styles.actionItem}
+          anchor={`📝 Standards ${
+            filter.standards?.size ? `(${filter.standards.size})` : ""
+          }`}
+          popup={
+            <Popup title="Standards">
+              {standards.map((std) => {
+                return (
+                  <PopupRadioItem
+                    key={`${std.id}:${filter.standards?.has(std.id)}`}
+                    type="checkbox"
+                    label={std.name}
+                    onChange={(ev) => {
+                      ev.preventDefault();
+
+                      const newStandards = new Set(filter?.standards ?? []);
+
+                      if (ev.target.checked) {
+                        newStandards.add(std.id);
+                      } else {
+                        newStandards.delete(std.id);
+                      }
+
+                      onChange({
+                        ...filter,
+                        standards: newStandards,
+                      });
+                    }}
+                    name="standards"
+                    value={std.id}
+                    checked={filter.standards?.has(std.id) ?? false}
                   />
                 );
               })}

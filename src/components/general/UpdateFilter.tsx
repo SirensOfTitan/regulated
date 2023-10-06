@@ -41,6 +41,14 @@ export function UpdateFilter({ filter, query }: Props) {
       }
     }
 
+    if (filter.standards == null || filter.standards.size === 0) {
+      newParams.delete("standards");
+    } else {
+      for (const acc of filter.standards) {
+        newParams.append("standards", acc);
+      }
+    }
+
     if (filter.users == null || filter.users.size === 0) {
       newParams.delete("users");
     } else {

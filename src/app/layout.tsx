@@ -20,7 +20,6 @@ export default function RootLayout({
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-0LJYYDV1QJ"
         strategy="lazyOnload"
-
       />
       <Script id="google-analytics" strategy="lazyOnload">
         {`

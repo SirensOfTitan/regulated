@@ -8,6 +8,7 @@ export type PackedOrderOption = `${OrderBy}-${Direction}`;
 export interface Filter {
   order?: Maybe<PackedOrderOption>;
   accreditations?: Set<string>;
+  standards?: Set<string>;
   users?: Set<string>;
   usecase?: Maybe<string>;
 }
