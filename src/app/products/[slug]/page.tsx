@@ -42,8 +42,8 @@ export async function generateMetadata({ params }: Params) {
   return product == null
     ? {}
     : {
-        title: product.name,
-      };
+      title: `${product.name} regulations - Your guide to regulated tech products and services`,
+    };
 }
 
 const searchParamsSchema = z.object({

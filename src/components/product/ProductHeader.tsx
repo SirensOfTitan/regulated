@@ -90,7 +90,7 @@ export default function ProductHeader({ product, page }: Props) {
         />
       </div>
       <div className={styles.basic}>
-        <Heading className={styles.name} depth={2}>
+        <Heading className={styles.name} depth={1}>
           {product.name}
         </Heading>
         {product.description}

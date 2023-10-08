@@ -7,7 +7,6 @@ import {
   AllStandardsCacheType,
   AllUsersCacheType,
 } from "app/cache/types";
-import { Metadata } from "next";
 
 export const revalidate = 3600;
 
