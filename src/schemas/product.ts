@@ -15,6 +15,7 @@ export const product = () =>
       "Use Cases": z.optional(z.array(z.string())),
       "Wikipedia Slug": z.optional(z.string()),
       Description: z.optional(z.string()),
+      "Last Modified": z.string().datetime(),
     })
     .transform((obj) => ({
       id: obj["ID"],
@@ -31,4 +32,5 @@ export const product = () =>
       users: obj["Used By"] ?? [],
       usecases: obj["Use Cases"] ?? [],
       wikipediaSlug: obj["Wikipedia Slug"],
+      lastModified: obj["Last Modified"],
     }));
