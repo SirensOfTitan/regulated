@@ -68,6 +68,17 @@ function slugToImageName(slug: string): Maybe<string> {
   }
 }
 
+interface LetterMarkProps {
+  name: string;
+}
+function LetterMark({ name }: LetterMarkProps) {
+  return (
+    <div className={styles.letterMark} aria-hidden={true}>
+      {`${name[0]}`.toUpperCase()}
+    </div>
+  );
+}
+
 interface Props {
   logo?: ReactNode;
   product: Product;
@@ -82,12 +93,12 @@ export default function ProductHeader({ product, page }: Props) {
   return (
     <section className={styles.productHeader}>
       <div className={styles.logo}>
-        <Image
+        {logo == null ? <LetterMark name={product.name} />: <Image
           className={styles.image}
           src={`/products/${logo}`}
           fill
           alt={`Logo for ${product.name}`}
-        />
+        />}
       </div>
       <div className={styles.basic}>
         <Heading className={styles.name} depth={1}>
