@@ -32,7 +32,9 @@ export default function ProductListItem({
         href={`/products/${product.slug}`}
         className={styles.anchor}
         aria-label={`Product details for ${product.name}`}
-      />
+      >
+        {product.name} details page
+      </Link>
       <div className={styles.content}>
         <h2 className={styles.name}>{product.name}</h2>
         <div className={styles.info}>
