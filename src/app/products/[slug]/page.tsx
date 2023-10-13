@@ -42,7 +42,14 @@ export async function generateMetadata({ params }: Params) {
   return product == null
     ? {}
     : {
-      title: `${product.name} regulations - Your guide to regulated tech products and services`,
+      title: `${product.name} regulated industry details - Your guide to regulated tech products and services`,
+      openGraph: {
+        title: `${product.name} details: accreditations, users and helpful links.`,
+        description: product.description ?? undefined,
+        type: "article",
+        url: `https://regulated.app/products/${product.slug}`,
+        locale: "en_US"
+      }
     };
 }
 
