@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description,
   openGraph: {
     title,
+    images: "/opengraph-logo.jpeg",
     description,
     locale: "en_US",
     type: "website",
