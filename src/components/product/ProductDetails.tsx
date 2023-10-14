@@ -7,12 +7,12 @@ import { Maybe } from "app/types";
 import styles from "./ProductDetails.module.css";
 import Heading from "../general/Heading";
 import { useMemo } from "react";
-import Tag from "app/components/general/Tag";
 import Container from "../general/Container";
 import Alert from "../general/Alert";
 import ProductHeader from "./ProductHeader";
 import ProductDetailsUsers from "./ProductDetailsUsers";
 import ProductDetailsAccreditations from "./ProductDetailsAccreditations";
+import { Product as SchemaProduct, WithContext } from "schema-dts";
 
 interface LinksProps {
   links: Link[];
@@ -122,6 +122,13 @@ export default function ProductDetails({
     [allStandards, productStandards],
   );
 
+  const jsonLd: WithContext<SchemaProduct> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `Users and accreditations for ${product.name} - Regulated.app`,
+    description: product.description,
+  };
+
   return (
     <>
       <Header query="" onChangeQuery={() => null} product={product} />
@@ -134,6 +141,10 @@ export default function ProductDetails({
           <ProductDetailsAccreditations accreditations={accreditations} />
           <Standards standards={standards} />
         </article>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </Container>
     </>
   );
