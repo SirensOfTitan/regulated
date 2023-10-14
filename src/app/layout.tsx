@@ -4,7 +4,7 @@ import Script from "next/script";
 import { Metadata } from "next";
 
 const title =
-  "Regulated.app | Your ultimate resource for accredited tech in regulated industries";
+  "Regulated | Your resource for tech in regulated industries";
 const description =
   "Regulated.app provides the latest information on products used in regulated industry like banking, government, and healthcare.";
 
