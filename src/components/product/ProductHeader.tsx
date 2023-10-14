@@ -93,12 +93,16 @@ export default function ProductHeader({ product, page }: Props) {
   return (
     <section className={styles.productHeader}>
       <div className={styles.logo}>
-        {logo == null ? <LetterMark name={product.name} />: <Image
-          className={styles.image}
-          src={`/products/${logo}`}
-          fill
-          alt={`Logo for ${product.name}`}
-        />}
+        {logo == null ? (
+          <LetterMark name={product.name} />
+        ) : (
+          <Image
+            className={styles.image}
+            src={`/products/${logo}`}
+            fill
+            alt={`Logo for ${product.name}`}
+          />
+        )}
       </div>
       <div className={styles.basic}>
         <Heading className={styles.name} depth={1}>

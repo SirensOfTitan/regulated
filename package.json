@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "precommit": "pnpm tsc && pnpm lint && pnpm prettier src --write"
+    "precommit": "bun tsc && bun lint && bun prettier src --write"
   },
   "dependencies": {
     "@types/node": "20.6.2",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/json-stable-stringify": "^1.0.34",
     "encoding": "^0.1.13",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "typescript-language-server": "^3.3.2"
   }
 }

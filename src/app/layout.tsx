@@ -3,8 +3,10 @@ import "./constants.css";
 import Script from "next/script";
 import { Metadata } from "next";
 
-const title = "Regulated.app | Your ultimate resource for accredited tech in regulated industries";
-const description = "Regulated.app provides the latest information on products used in regulated industry like banking, government, and healthcare.";
+const title =
+  "Regulated.app | Your ultimate resource for accredited tech in regulated industries";
+const description =
+  "Regulated.app provides the latest information on products used in regulated industry like banking, government, and healthcare.";
 
 export const metadata: Metadata = {
   title,
@@ -15,8 +17,8 @@ export const metadata: Metadata = {
     description,
     locale: "en_US",
     type: "website",
-    url: "https://regulated.app"
-  }
+    url: "https://regulated.app",
+  },
 };
 
 export default function RootLayout({
