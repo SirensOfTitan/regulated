@@ -3,8 +3,7 @@ import "./constants.css";
 import Script from "next/script";
 import { Metadata } from "next";
 
-const title =
-  "Regulated | Your resource for tech in regulated industries";
+const title = "Regulated | Your resource for tech in regulated industries";
 const description =
   "Regulated.app provides the latest information on products used in regulated industry like banking, government, and healthcare.";
 

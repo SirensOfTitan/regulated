@@ -39,12 +39,16 @@ export async function generateMetadata({ params }: Params) {
     tableName: "Products",
   });
 
+  const title =
+    product == null
+      ? ""
+      : `${product.name}v - accreditations, users and helpful links`;
   return product == null
     ? {}
     : {
-        title: `${product.name} regulated industry details - Your guide to regulated tech products and services`,
+        title,
         openGraph: {
-          title: `${product.name} details: accreditations, users and helpful links.`,
+          title,
           description: product.description ?? undefined,
           type: "article",
           url: `https://regulated.app/products/${product.slug}`,
