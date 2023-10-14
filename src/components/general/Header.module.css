@@ -51,10 +51,13 @@
 .logo {
   flex: 0 0 auto;
   padding: 8px;
+  text-decoration: none;
 }
 
-.logo {
+.logo h1 {
   font-size: 18px;
+  margin: 0;
+  padding: 0;
   color: var(--brand);
   font-weight: bold;
   text-decoration: none;

@@ -39,7 +39,7 @@ export default function Header({
     <header className={styles.header}>
       <Container className={styles.headerContainer}>
         <a className={styles.logo} href="/">
-          regulated.app
+          <h1>regulated.app</h1>
         </a>
         <div className={styles.query}>
           <span className={styles.icon}>🔎</span>
