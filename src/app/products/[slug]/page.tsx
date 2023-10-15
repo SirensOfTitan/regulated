@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Params) {
   const title =
     product == null
       ? ""
-      : `${product.name}v - accreditations, users and helpful links`;
+      : `${product.name} - accreditations, users and helpful links`;
   return product == null
     ? {}
     : {
