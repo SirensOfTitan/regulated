@@ -25,6 +25,8 @@ function slugToImageName(slug: string): Maybe<string> {
       return "asana.svg";
     case "ask-sage":
       return "asksage.png";
+    case "atlassian-confluence-and-jira-cloud":
+      return "atlassian.svg";
     case "betterup":
       return "betterup.jpg";
     case "box":
