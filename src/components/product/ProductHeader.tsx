@@ -55,6 +55,8 @@ function slugToImageName(slug: string): Maybe<string> {
       return "snowflake.svg";
     case "surveymonkey":
       return "surveymonkey.svg";
+    case "tanium-cloud":
+      return "tanium.png";
     case "trello":
       return "trello.svg";
     case "twilio":
