@@ -31,16 +31,24 @@ function slugToImageName(slug: string): Maybe<string> {
       return "betterup.jpg";
     case "box":
       return "box.svg";
+    case "canva":
+      return "canva.svg";
     case "cisco-webex":
       return "cisco-webex.svg";
     case "community":
       return "community.jpg";
     case "docusign":
       return "docusign.svg";
+    case "dovetail":
+      return "dovetail.svg";
     case "figma":
       return "figma.svg";
+    case "jotform":
+      return "jotform.svg";
     case "lucid":
       return "lucid.svg";
+    case "notion":
+      return "notion.svg";
     case "palantir":
       return "palantir.svg";
     case "recorded-future":
