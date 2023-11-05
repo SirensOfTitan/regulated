@@ -132,7 +132,8 @@ export default function ProductHeader({ product, page }: Props) {
         {page !== "product" ? null : (
           <Link
             className={styles.button}
-            href={`/products/${product.slug}/feedback`}
+            href={`https://share.hsforms.com/1yD1mq_XzTvGio2Wm3PSQnAqdinv?subject=Suggested%20changes%20for%20${product.slug}`}
+            target="_blank"
           >
             ✍️ Suggest changes
           </Link>
